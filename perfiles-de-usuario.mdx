@@ -1,0 +1,93 @@
+---
+title: "Perfiles de Usuario en Betree60: Roles y Permisos"
+sidebarTitle: "Perfiles de Usuario"
+description: "Conozca los cuatro perfiles de usuario de Betree60 —Asesor, Aspirante, Administrador y Cliente— y las funciones que cada uno puede realizar en el sistema."
+---
+
+Betree60 organiza el acceso al sistema mediante cuatro perfiles de usuario claramente definidos. Cada perfil cuenta con un conjunto de permisos y módulos específicos que se ajustan a las responsabilidades de esa persona dentro del flujo de negocio. Comprender las diferencias entre los perfiles le ayudará a saber exactamente qué puede hacer en el sistema y cómo interactúa con los demás usuarios.
+
+## ¿Cómo se asignan los perfiles?
+
+Los perfiles de usuario son asignados exclusivamente por el **Administrador** del sistema. Ningún usuario puede cambiar su propio perfil ni el de otros usuarios, a menos que tenga permisos de administrador. Cuando un usuario es creado en Betree60, el administrador le asigna el perfil que corresponde a su función dentro de la organización.
+
+<Note>
+  Si considera que su perfil no es el correcto o necesita que se le cambie, comuníquese con el administrador de su organización.
+</Note>
+
+## Los cuatro perfiles de usuario
+
+<CardGroup cols={2}>
+  <Card title="Asesor" icon="user-tie">
+    Perfil comercial del sistema. Gestiona prospectos, genera cotizaciones, administra su cartera de clientes y consulta el seguimiento de ventas y comisiones.
+  </Card>
+  <Card title="Aspirante" icon="user-clock">
+    Perfil de incorporación. Representa a un futuro asesor en proceso de onboarding. Puede registrarse, acceder al sistema y revisar las cotizaciones que le han sido enviadas.
+  </Card>
+  <Card title="Administrador" icon="gear">
+    Perfil con acceso total al sistema. Crea y gestiona usuarios, consulta reportes globales y realiza la configuración de la plataforma.
+  </Card>
+  <Card title="Cliente" icon="umbrella-beach">
+    Perfil del propietario de semanas vacacionales. Puede consultar sus semanas, realizar reservaciones y gestionar sus pagos dentro de su panel personal.
+  </Card>
+</CardGroup>
+
+## Comparación detallada de perfiles
+
+La siguiente tabla resume las funciones disponibles para cada perfil dentro de Betree60:
+
+| Función | Asesor | Aspirante | Administrador | Cliente |
+|---|---|---|---|---|
+| Gestionar prospectos | ✅ | ❌ | ❌ | ❌ |
+| Crear y enviar cotizaciones | ✅ | ❌ | ❌ | ❌ |
+| Ver cotizaciones recibidas | ❌ | ✅ | ❌ | ❌ |
+| Administrar clientes | ✅ | ❌ | ❌ | ❌ |
+| Ver seguimiento de ventas | ✅ | ❌ | ✅ | ❌ |
+| Ver seguimiento de comisiones | ✅ | ❌ | ✅ | ❌ |
+| Consultar semanas vacacionales | ❌ | ❌ | ❌ | ✅ |
+| Realizar reservaciones | ❌ | ❌ | ❌ | ✅ |
+| Gestionar pagos propios | ❌ | ❌ | ❌ | ✅ |
+| Gestionar usuarios | ❌ | ❌ | ✅ | ❌ |
+| Consultar reportes globales | ❌ | ❌ | ✅ | ❌ |
+| Configurar el sistema | ❌ | ❌ | ✅ | ❌ |
+| Registrarse en el sistema | ❌ | ✅ | ❌ | ❌ |
+
+## Diferencias entre Asesor y Aspirante
+
+Aunque tanto el Asesor como el Aspirante forman parte del equipo comercial, sus roles dentro de Betree60 son distintos:
+
+- El **Asesor** es un vendedor activo y con experiencia dentro de la organización. Tiene acceso completo al módulo comercial: puede buscar y registrar prospectos, generar cotizaciones personalizadas, dar seguimiento a sus clientes y monitorear sus comisiones en tiempo real.
+
+- El **Aspirante** es un candidato a convertirse en asesor. Su perfil está orientado al proceso de incorporación: puede registrarse en la plataforma y acceder al sistema, pero sus permisos son limitados. Principalmente puede revisar las cotizaciones que le han sido enviadas por el asesor que lo está incorporando, lo que le permite conocer el producto antes de operar de forma independiente.
+
+<Tip>
+  Una vez que el Aspirante completa su proceso de onboarding y es aprobado por el administrador, su perfil puede ser actualizado a **Asesor**, otorgándole acceso completo al módulo comercial.
+</Tip>
+
+## Diferencias entre Cliente y Asesor
+
+El **Cliente** y el **Asesor** interactúan con Betree60 desde perspectivas completamente distintas:
+
+- El **Asesor** trabaja del lado operativo y comercial del sistema. Su enfoque está en vender semanas vacacionales, gestionar relaciones con prospectos y clientes, y monitorear su desempeño en ventas y comisiones.
+
+- El **Cliente** utiliza Betree60 como propietario de semanas vacacionales. Su interacción con el sistema es de consumo: consulta las semanas que posee, selecciona fechas y destinos para hacer reservaciones, y gestiona sus compromisos de pago. El cliente no tiene visibilidad sobre el módulo comercial ni las operaciones del asesor.
+
+En otras palabras, el Asesor *administra* el negocio desde adentro, mientras que el Cliente *disfruta* el servicio desde afuera.
+
+## Resumen del flujo entre perfiles
+
+Para visualizar cómo se relacionan los perfiles en el ciclo de vida del sistema:
+
+<Steps>
+  <Step title="El Administrador configura el sistema">
+    Crea los usuarios, asigna perfiles y configura los parámetros globales de la plataforma.
+  </Step>
+  <Step title="El Asesor opera el ciclo comercial">
+    Identifica prospectos, genera cotizaciones y cierra ventas de semanas vacacionales.
+  </Step>
+  <Step title="El Aspirante se incorpora al equipo">
+    Recibe una cotización del asesor, revisa el producto y completa su proceso de onboarding para convertirse en asesor activo.
+  </Step>
+  <Step title="El Cliente gestiona sus semanas">
+    Una vez realizada la compra, accede a su panel para consultar sus semanas, hacer reservaciones y administrar sus pagos.
+  </Step>
+</Steps>
