@@ -4,66 +4,95 @@ sidebarTitle: "Primeros Pasos"
 description: "Aprenda cómo acceder a Betree60 por primera vez, iniciar sesión con sus credenciales y navegar hacia el área correspondiente a su perfil."
 ---
 
-Antes de aprovechar todas las funciones de Betree60, es necesario que acceda al sistema por primera vez y se familiarice con la navegación básica. Este proceso es sencillo y toma solo unos minutos. Asegúrese de tener a la mano las credenciales que le fueron proporcionadas por su administrador o el correo de activación que recibió al momento de ser registrado en la plataforma.
+Betree60 se accede a través de un dominio único, pero **cada tipo de usuario entra a una ruta distinta**. Antes de iniciar sesión, identifique cuál es su perfil para saber por dónde ingresar.
 
-## Cómo iniciar sesión en Betree60
+## Rutas de acceso
 
-Siga los pasos a continuación para ingresar al sistema por primera vez:
+| Perfil | Ruta de ingreso |
+| --- | --- |
+| Administración | `/admin/login` |
+| Vendedores y Aspirantes | `/seller/login` |
+| Clientes | `/client/login` |
+| Público (sin login) | `/` |
+
+<Note>
+  Si intenta ingresar a una ruta que no corresponde a su rol, Betree60 lo redirige a la ruta correcta después de autenticarse.
+</Note>
+
+## Cómo activan su cuenta
+
+<AccordionGroup>
+  <Accordion title="Administración">
+    Su cuenta es creada por otro administrador. Recibirá un correo (enviado por **Resend**) con un enlace de activación para definir su contraseña.
+  </Accordion>
+
+  <Accordion title="Vendedores">
+    Su cuenta se genera cuando el área **Comercial** aprueba su expediente de aspirante. Recibirá un correo con la confirmación y podrá iniciar sesión en `/seller/login` con las credenciales que definió al autoregistrarse.
+  </Accordion>
+
+  <Accordion title="Aspirantes">
+    Se registran directamente en `/seller/registro` con nombre completo, correo y teléfono. Definen su contraseña en el mismo paso. Después deberán completar su expediente para ser aprobados.
+  </Accordion>
+
+  <Accordion title="Clientes">
+    Su cuenta se crea automáticamente al cerrarse la venta. Reciben un correo de bienvenida con un enlace para establecer su contraseña y comenzar el onboarding.
+  </Accordion>
+</AccordionGroup>
+
+## Iniciar sesión
 
 <Steps>
-  <Step title="Ingrese a la página de inicio de sesión">
-    Abra su navegador de preferencia e ingrese la dirección URL de Betree60 que le proporcionó su administrador. Será recibido por la pantalla de inicio de sesión de la plataforma.
+  <Step title="Abra la ruta correcta">
+    Escriba en el navegador la URL correspondiente a su perfil (por ejemplo `betree60.com/client/login`).
   </Step>
-  <Step title="Ingrese sus credenciales">
-    Escriba su **correo electrónico** y **contraseña** en los campos correspondientes. Estas credenciales fueron creadas por el administrador del sistema o generadas automáticamente al momento de su registro.
-
-    <Note>
-      Si es la primera vez que accede, es posible que se le solicite cambiar su contraseña temporal por una nueva de su elección. Elija una contraseña segura y guárdela en un lugar seguro.
-    </Note>
+  <Step title="Introduzca su correo y contraseña">
+    Use el correo con el que fue registrado. Si es la primera vez, use el enlace de activación de su correo de bienvenida.
   </Step>
-  <Step title="Haga clic en 'Iniciar sesión'">
-    Presione el botón de inicio de sesión para acceder al sistema. Si sus credenciales son correctas, será redirigido automáticamente a su panel principal según el perfil que tenga asignado.
+  <Step title="Complete verificación (si aplica)">
+    Cuentas de Administración con permisos elevados requieren un **segundo factor** (código enviado por correo).
   </Step>
-  <Step title="Navegue a su panel principal">
-    Una vez dentro, encontrará el menú de navegación en la barra lateral. Desde allí podrá acceder a todos los módulos habilitados para su perfil. Explore las secciones disponibles para familiarizarse con la interfaz.
-  </Step>
-  <Step title="Identifique su perfil y siga la guía correspondiente">
-    Revise cuál es el perfil que tiene asignado en el sistema y consulte la documentación específica de su rol para aprender a usar las funciones que le corresponden.
+  <Step title="Acceda a su panel">
+    Al iniciar sesión se le redirige automáticamente a su panel principal.
   </Step>
 </Steps>
 
-## ¿Olvidó su contraseña?
+## Recuperar contraseña
 
-Si no recuerda su contraseña, puede restablecerla fácilmente desde la pantalla de inicio de sesión:
+Todos los perfiles cuentan con recuperación por correo:
 
-1. Haga clic en el enlace **"¿Olvidó su contraseña?"** que aparece debajo del formulario de acceso.
-2. Ingrese el correo electrónico asociado a su cuenta en Betree60.
-3. Revise su bandeja de entrada. Recibirá un correo con un enlace para restablecer su contraseña.
-4. Haga clic en el enlace del correo y siga las instrucciones para crear una nueva contraseña.
+1. En su pantalla de login, haga clic en **"¿Olvidó su contraseña?"**.
+2. Ingrese el correo asociado a su cuenta.
+3. Recibirá un enlace vía Resend con vigencia de **1 hora**.
+4. Defina una nueva contraseña.
 
 <Warning>
-  El enlace para restablecer su contraseña tiene una vigencia limitada. Si no lo utiliza antes de que expire, deberá solicitar un nuevo enlace repitiendo el proceso.
+  El enlace es de un solo uso y expira en 1 hora. Si expira, solicite uno nuevo repitiendo el proceso.
 </Warning>
 
-## ¿A dónde ir según su perfil?
+## Navegación básica
 
-Una vez que haya iniciado sesión exitosamente, consulte la sección de la documentación que corresponde a su rol dentro de Betree60:
+Una vez dentro, todos los perfiles comparten la misma estructura visual:
+
+- **Barra lateral izquierda**: módulos disponibles según su rol.
+- **Barra superior**: selector de perfil (si tiene múltiples roles), notificaciones y menú de usuario.
+- **Área principal**: contenido del módulo seleccionado.
+
+## Siguiente paso según su perfil
 
 <CardGroup cols={2}>
-  <Card title="Soy Asesor" icon="user-tie" href="/asesor/panel-principal">
-    Aprenda a gestionar prospectos, crear cotizaciones y dar seguimiento a sus ventas y comisiones.
+  <Card title="Soy Administración" icon="shield-halved" href="/administrador/panel-principal">
+    Configuración, aprobaciones, expedientes y reportes.
   </Card>
+
+  <Card title="Soy Vendedor" icon="user-tie" href="/asesor/panel-principal">
+    Prospectos, cotizaciones, apartados y comisiones.
+  </Card>
+
   <Card title="Soy Aspirante" icon="user-clock" href="/aspirante/panel-principal">
-    Conozca cómo registrarse, acceder al sistema y revisar las cotizaciones que le han sido enviadas.
+    Complete su expediente para ser aprobado.
   </Card>
-  <Card title="Soy Administrador" icon="gear" href="/administrador/panel-principal">
-    Descubra cómo gestionar usuarios, consultar reportes y configurar el sistema completo.
-  </Card>
+
   <Card title="Soy Cliente" icon="umbrella-beach" href="/cliente/panel-principal">
-    Consulte sus semanas vacacionales, realice reservaciones y administre sus pagos.
+    Complete onboarding, firme contrato y comience a reservar.
   </Card>
 </CardGroup>
-
-<Tip>
-  Si no está seguro de cuál es su perfil, comuníquese con el administrador de su organización. Solo el Administrador puede asignar y modificar los perfiles de usuario dentro de Betree60.
-</Tip>

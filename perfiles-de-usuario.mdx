@@ -4,90 +4,160 @@ sidebarTitle: "Perfiles de Usuario"
 description: "Conozca los cuatro perfiles de Betree60 —Asesor, Aspirante, Administrador y Cliente— y las funciones que cada uno puede realizar en el sistema."
 ---
 
-Betree60 organiza el acceso al sistema mediante cuatro perfiles de usuario claramente definidos. Cada perfil cuenta con un conjunto de permisos y módulos específicos que se ajustan a las responsabilidades de esa persona dentro del flujo de negocio. Comprender las diferencias entre los perfiles le ayudará a saber exactamente qué puede hacer en el sistema y cómo interactúa con los demás usuarios.
+Betree60 divide su experiencia en cinco tipos de usuario. Cada tipo tiene una **ruta base** distinta dentro de la aplicación Next.js y un conjunto claro de permisos y tareas. Los roles nunca se auto-asignan: los usuarios internos son creados por Administración, y los clientes se crean automáticamente al concretarse una venta.
 
-## ¿Cómo se asignan los perfiles?
+## Vista general
 
-Los perfiles de usuario son asignados exclusivamente por el **Administrador** del sistema. Ningún usuario puede cambiar su propio perfil ni el de otros usuarios, a menos que tenga permisos de administrador. Cuando un usuario es creado en Betree60, el administrador le asigna el perfil que corresponde a su función dentro de la organización.
+| Persona | Ruta base | Requiere login | Quién la crea |
+| --- | --- | --- | --- |
+| Administración | `/admin` | Sí | Admin (rol `admin`) |
+| Vendedores | `/seller` | Sí | Admin o superior en la jerarquía |
+| Aspirantes | `/seller` (restringido) | Sí | Autoregistro \+ aprobación de Comercial |
+| Clientes | `/client` | Sí | Automático al cerrar venta |
+| Público | — | No | N/A |
 
-<Note>
-  Si considera que su perfil no es el correcto o necesita que se le cambie, comuníquese con el administrador de su organización.
-</Note>
+## 1. Administración (`/admin`)
 
-## Los cuatro perfiles de usuario
+Personal interno de **Concentradora Oasis Tulum S.A.P.I. de C.V.** que opera, valida y supervisa el negocio.
 
-<CardGroup cols={2}>
-  <Card title="Asesor" icon="user-tie" href="/asesor/panel-principal">
-    Perfil comercial del sistema. Gestiona prospectos, genera cotizaciones, administra su cartera de clientes y consulta el seguimiento de ventas y comisiones.
-  </Card>
-  <Card title="Aspirante" icon="user-clock" href="/aspirante/panel-principal">
-    Perfil de incorporación. Representa a un futuro asesor en proceso de onboarding. Puede registrarse, acceder al sistema y revisar las cotizaciones que le han sido enviadas.
-  </Card>
-  <Card title="Administrador" icon="gear" href="/administrador/panel-principal">
-    Perfil con acceso total al sistema. Crea y gestiona usuarios, consulta reportes globales y realiza la configuración de la plataforma.
-  </Card>
-  <Card title="Cliente" icon="umbrella-beach" href="/cliente/panel-principal">
-    Perfil del propietario de semanas vacacionales. Puede consultar sus semanas, realizar reservaciones y gestionar sus pagos dentro de su panel personal.
-  </Card>
-</CardGroup>
+**Roles disponibles:**
 
-## Comparación detallada de perfiles
+| Rol | Responsabilidad principal |
+| --- | --- |
+| `admin` | Superusuario. Configuración global, gestión de usuarios y permisos. |
+| `juridico` | Revisión y aprobación de expedientes, generación y firma de contratos en DocuSign. |
+| `cobranza` | Seguimiento de enganches y mensualidades, conciliación con OpenPay, gestión de morosidad. |
+| `comercial` | Aprobación de aspirantes, revisión de ventas, comisiones y jerarquía de vendedores. |
 
-La siguiente tabla resume las funciones disponibles para cada perfil dentro de Betree60:
+**Tareas típicas:**
 
-| Función | Asesor | Aspirante | Administrador | Cliente |
-|---|---|---|---|---|
-| Gestionar prospectos | ✅ | ❌ | ❌ | ❌ |
-| Crear y enviar cotizaciones | ✅ | ❌ | ❌ | ❌ |
-| Ver cotizaciones recibidas | ❌ | ✅ | ❌ | ❌ |
-| Administrar clientes | ✅ | ❌ | ❌ | ❌ |
-| Ver seguimiento de ventas | ✅ | ❌ | ✅ | ❌ |
-| Ver seguimiento de comisiones | ✅ | ❌ | ✅ | ❌ |
-| Consultar semanas vacacionales | ❌ | ❌ | ❌ | ✅ |
-| Realizar reservaciones | ❌ | ❌ | ❌ | ✅ |
-| Gestionar pagos propios | ❌ | ❌ | ❌ | ✅ |
-| Gestionar usuarios | ❌ | ❌ | ✅ | ❌ |
-| Consultar reportes globales | ❌ | ❌ | ✅ | ❌ |
-| Configurar el sistema | ❌ | ❌ | ✅ | ❌ |
-| Registrarse en el sistema | ❌ | ✅ | ❌ | ❌ |
+- Alta y baja de usuarios internos y vendedores.
+- Aprobación de aspirantes que completaron su expediente.
+- Validación documental de clientes (identificación, comprobante domicilio, RFC).
+- Emisión y envío de contratos por DocuSign.
+- Registro y conciliación de pagos OpenPay.
+- Consulta de reportes globales (ventas, cartera, comisiones, ocupación).
+- Configuración de desarrollos, tipos de villa, temporadas y esquemas de pago.
 
-## Diferencias entre Asesor y Aspirante
+<Card title="Ir a la documentación de Administración" icon="shield-halved" href="/administrador/panel-principal">
+</Card>
 
-Aunque tanto el Asesor como el Aspirante forman parte del equipo comercial, sus roles dentro de Betree60 son distintos:
+## 2. Vendedores (`/seller`)
 
-- El **Asesor** es un vendedor activo y con experiencia dentro de la organización. Tiene acceso completo al módulo comercial: puede buscar y registrar prospectos, generar cotizaciones personalizadas, dar seguimiento a sus clientes y monitorear sus comisiones en tiempo real.
-
-- El **Aspirante** es un candidato a convertirse en asesor. Su perfil está orientado al proceso de incorporación: puede registrarse en la plataforma y acceder al sistema, pero sus permisos son limitados. Principalmente puede revisar las cotizaciones que le han sido enviadas por el asesor que lo está incorporando, lo que le permite conocer el producto antes de operar de forma independiente.
-
-<Tip>
-  Una vez que el Aspirante completa su proceso de onboarding y es aprobado por el administrador, su perfil puede ser actualizado a **Asesor**, otorgándole acceso completo al módulo comercial.
-</Tip>
-
-## Diferencias entre Cliente y Asesor
-
-El **Cliente** y el **Asesor** interactúan con Betree60 desde perspectivas completamente distintas:
-
-- El **Asesor** trabaja del lado operativo y comercial del sistema. Su enfoque está en vender semanas vacacionales, gestionar relaciones con prospectos y clientes, y monitorear su desempeño en ventas y comisiones.
-
-- El **Cliente** utiliza Betree60 como propietario de semanas vacacionales. Su interacción con el sistema es de consumo: consulta las semanas que posee, selecciona fechas y destinos para hacer reservaciones, y gestiona sus compromisos de pago. El cliente no tiene visibilidad sobre el módulo comercial ni las operaciones del asesor.
-
-En otras palabras, el Asesor *administra* el negocio desde adentro, mientras que el Cliente *disfruta* el servicio desde afuera.
-
-## Resumen del flujo entre perfiles
-
-Para visualizar cómo se relacionan los perfiles en el ciclo de vida del sistema:
+Fuerza comercial. Un vendedor está activo y puede operar el ciclo de venta completo. La jerarquía se aplica sobre los mismos permisos base, escalando alcance y visibilidad:
 
 <Steps>
-  <Step title="El Administrador configura el sistema">
-    Crea los usuarios, asigna perfiles y configura los parámetros globales de la plataforma.
+  <Step title="Director">
+    Ve toda la operación comercial. Aprueba condiciones especiales, descuentos y esquemas fuera de tabulador.
   </Step>
-  <Step title="El Asesor opera el ciclo comercial">
-    Identifica prospectos, genera cotizaciones y cierra ventas de semanas vacacionales.
+  <Step title="Manager">
+    Supervisa uno o varios equipos de asesores. Ve la cartera de su equipo, reportes y comisiones agregadas.
   </Step>
-  <Step title="El Aspirante se incorpora al equipo">
-    Recibe una cotización del asesor, revisa el producto y completa su proceso de onboarding para convertirse en asesor activo.
+  <Step title="Advisor (Asesor)">
+    Vendedor de línea. Registra prospectos, cotiza, apartа, cierra la venta y da seguimiento a su cliente durante todo el ciclo.
   </Step>
-  <Step title="El Cliente gestiona sus semanas">
-    Una vez realizada la compra, accede a su panel para consultar sus semanas, hacer reservaciones y administrar sus pagos.
+  <Step title="Broker">
+    Vendedor externo o de canal. Puede iniciar apartados y capturar prospectos, pero opera con un tabulador de comisiones y permisos más acotados.
   </Step>
 </Steps>
+
+**Tareas típicas:**
+
+- Registrar prospectos y calificar interés.
+- Emitir cotizaciones (contado / financiado).
+- Iniciar apartados y enviar links de pago públicos.
+- Acompañar al cliente en onboarding, contrato y primer pago.
+- Consultar cartera, seguimiento de ventas y comisiones.
+
+<Card title="Ir a la documentación de Vendedores" icon="user-tie" href="/asesor/panel-principal">
+</Card>
+
+## 3. Aspirantes (`/seller` con acceso limitado)
+
+Un **aspirante** es un candidato a vendedor que ya se registró en la plataforma pero **aún no ha sido aprobado** por el área comercial. Su cuenta vive en la misma ruta `/seller` pero con acceso restringido: puede completar su **expediente** (datos personales, documentos, identificación, RFC, cuenta bancaria) y consultar información formativa, pero no puede prospectar ni cotizar hasta la aprobación.
+
+**Ciclo del aspirante:**
+
+<Steps>
+  <Step title="Autoregistro">
+    Se registra en la plataforma con correo y contraseña.
+  </Step>
+  <Step title="Expediente">
+    Sube documentos requeridos (INE, comprobante de domicilio, RFC, carátula bancaria).
+  </Step>
+  <Step title="Revisión Comercial">
+    El área `comercial` revisa el expediente y aprueba o solicita correcciones.
+  </Step>
+  <Step title="Activación como Vendedor">
+    Una vez aprobado, se le asigna una posición en la jerarquía (broker o advisor) y accede al módulo comercial completo.
+  </Step>
+</Steps>
+
+<Card title="Ir a la documentación de Aspirantes" icon="user-clock" href="/aspirante/panel-principal">
+</Card>
+
+## 4. Clientes (`/client`)
+
+Propietarios (o compradores en proceso) de una o más semanas en The Oasis Tulum. El portal del cliente tiene **dos estados** de acceso:
+
+<Tabs>
+  <Tab title="Portal limitado">
+    Se activa desde el momento en que se cierra la venta. El cliente puede:
+
+    - Ver el resumen de su compra y semanas asignadas.
+    - Completar los datos de su **perfil** (identificación, dirección, RFC, contacto de emergencia).
+    - Realizar el **primer pago** (enganche) mediante OpenPay.
+    - Firmar el **contrato** vía DocuSign.
+
+    Mientras exista alguno de estos tres pendientes (perfil incompleto, sin primer pago, sin contrato firmado), el portal se mantiene en modo limitado y no permite reservar ni operar el marketplace.
+  </Tab>
+  <Tab title="Portal completo">
+    Se desbloquea automáticamente cuando el cliente cumple los tres requisitos:
+
+    1. Perfil completo.
+    2. Primer pago (enganche) aplicado.
+    3. Contrato firmado en DocuSign.
+
+    A partir de aquí el cliente puede:
+
+    - **Reservar** sus estancias en el calendario del desarrollo.
+    - Consultar **ingresos** generados por su semana cuando la pone en renta.
+    - Operar el **marketplace** interno para intercambiar o ceder semanas entre propietarios.
+    - Descargar CFDI, comprobantes de pago y contratos.
+  </Tab>
+</Tabs>
+
+<Card title="Ir a la documentación de Clientes" icon="umbrella-beach" href="/cliente/panel-principal">
+</Card>
+
+## 5. Público (sin login)
+
+Cualquier visitante puede interactuar con Betree60 sin registrarse a través de flujos públicos:
+
+- **Cotizador**: simula precios por villa, temporada y esquema de pago.
+- **Apartado por broker**: un broker externo comparte un enlace para que el prospecto realice el apartado inicial sin cuenta.
+- **Links de pago**: enlaces únicos generados por asesores o cobranza para pagar apartado, enganche o mensualidad.
+- **Documentos legales**: aviso de privacidad, términos y condiciones, información del desarrollo.
+
+<Card title="Ir a la documentación del flujo Público" icon="globe" href="/publico/cotizador">
+</Card>
+
+## Matriz de permisos
+
+| Acción | Admin | Jurídico | Cobranza | Comercial | Director | Manager | Advisor | Broker | Aspirante | Cliente | Público |
+| --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Ver dashboard global | ✅ | ✅ | ✅ | ✅ | ⚠️ equipo | ⚠️ equipo | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Gestionar usuarios internos | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Aprobar aspirantes | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Emitir/firmar contratos | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | firma | ❌ |
+| Conciliar pagos | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Registrar prospecto | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ (form) |
+| Emitir cotización | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ❌ | ❌ | ✅ (simulador) |
+| Iniciar apartado | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ (link broker) |
+| Completar expediente | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ |
+| Reservar estancia | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ \* | ❌ |
+| Usar marketplace | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ \* | ❌ |
+
+<Note>
+  ⚠️ = alcance limitado a su equipo o tabulador. ✅ \* = requiere portal en modo **completo** (perfil, primer pago y contrato).
+</Note>
