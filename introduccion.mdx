@@ -4,48 +4,95 @@ sidebarTitle: "Introducción"
 description: "Descubra qué es Betree60, el problema que resuelve y cómo los distintos perfiles de usuario interactúan dentro de la plataforma."
 ---
 
-Betree60 es una plataforma SaaS diseñada para simplificar la administración de semanas vacacionales. Desde la prospección y venta de semanas hasta la gestión de reservaciones y el seguimiento de comisiones, Betree60 reúne en un solo lugar todas las operaciones que antes requerían múltiples herramientas o procesos manuales. El resultado es un flujo de trabajo más ordenado, transparente y eficiente para todos los involucrados.
+**Betree60** es la plataforma tecnológica que opera **The Oasis Tulum**, un desarrollo de villas de lujo en Tulum, Quintana Roo, comercializado bajo el modelo de **propiedad vacacional fraccionada** (semanas de temporada). La entidad legal responsable de la comercialización es **Concentradora Oasis Tulum S.A.P.I. de C.V.**
 
-## El problema que resuelve Betree60
+Betree60 unifica en una sola plataforma el ciclo completo del negocio: la prospección comercial, la generación de cotizaciones, el apartado de semanas, el cierre de la venta, el onboarding del cliente, la firma electrónica del contrato, el cobro del enganche y mensualidades, y el portal donde el propietario reserva sus estancias y utiliza sus ingresos.
 
-Administrar semanas vacacionales implica coordinar a muchas personas: asesores que venden, clientes que compran y usan sus semanas, aspirantes que se incorporan al equipo comercial, y administradores que necesitan visibilidad total sobre el negocio. Sin un sistema centralizado, esta coordinación genera errores, pérdida de información y dificultad para dar seguimiento oportuno. Betree60 elimina esa fricción al integrar todos estos flujos en una sola plataforma con roles claramente definidos.
+## El ciclo del negocio
 
-## Cómo funciona el sistema
+El flujo comercial y operativo se estructura de la siguiente manera:
 
-El ciclo central de Betree60 funciona de la siguiente manera: un **Asesor** identifica prospectos, les envía cotizaciones y los convierte en **Clientes** que adquieren semanas vacacionales. Paralelamente, los **Aspirantes** son futuros asesores que se encuentran en proceso de incorporación y pueden revisar las cotizaciones que se les envían. Todo este proceso es supervisado y configurado por el **Administrador**, quien tiene acceso completo al sistema.
+<Steps>
+  <Step title="Prospecto">
+    Un asesor (o el propio interesado desde la web pública) registra a un prospecto y captura su información de contacto y preferencias de compra.
+  </Step>
+  <Step title="Cotización">
+    Se genera una cotización personalizada con desarrollo, tipo de villa, número de semanas, temporada y esquema de pago (contado o financiado con enganche y mensualidades).
+  </Step>
+  <Step title="Apartado">
+    El prospecto realiza un **apartado** para reservar la semana mientras completa su expediente. El apartado puede iniciarse por un asesor o por un broker externo.
+  </Step>
+  <Step title="Venta">
+    Se confirma la compra y el prospecto se convierte formalmente en cliente dentro del sistema.
+  </Step>
+  <Step title="Onboarding">
+    El cliente completa su perfil (datos fiscales, identificación, documentos) para poder firmar el contrato y activar su acceso completo al portal.
+  </Step>
+  <Step title="Contrato (DocuSign)">
+    Se genera y envía el contrato de compraventa para firma electrónica a través de **DocuSign**.
+  </Step>
+  <Step title="Enganche y mensualidades">
+    Se cobra el enganche y se programan las mensualidades. Los pagos se procesan con **OpenPay** (tarjeta, SPEI, tiendas).
+  </Step>
+  <Step title="Portal del cliente">
+    Con el contrato firmado y el primer pago aplicado, el cliente accede a su portal completo para reservar estancias, consultar ingresos por su semana y operar en el **marketplace** interno.
+  </Step>
+</Steps>
 
-<Note>
-  Su experiencia dentro de Betree60 dependerá del perfil que le haya sido asignado. Cada perfil tiene acceso a módulos y funciones específicas diseñadas para su rol.
-</Note>
+## Arquitectura técnica
 
-## Perfiles de usuario
+Betree60 está construido sobre un stack moderno y desplegado en la nube:
 
-Betree60 cuenta con cuatro perfiles de usuario, cada uno con responsabilidades y permisos bien delimitados:
+| Componente | Tecnología |
+| --- | --- |
+| Framework web | **Next.js** (App Router) |
+| Base de datos | **MySQL** |
+| Almacenamiento de archivos | **Wasabi S3** (documentos, contratos, identificaciones) |
+| Procesamiento de pagos | **OpenPay** (tarjeta, SPEI, tiendas) |
+| Firma electrónica | **DocuSign** |
+| Correo transaccional | **Resend** |
+| Hosting | **Vercel** |
+
+## Personas y áreas de la plataforma
+
+Betree60 se organiza en tres áreas principales de acceso, más un flujo público sin login:
 
 <CardGroup cols={2}>
-  <Card title="Asesor" icon="user-tie" href="/asesor/panel-principal">
-    Gestiona prospectos, crea y envía cotizaciones, administra clientes, y consulta el seguimiento de ventas y comisiones. Es el perfil central del proceso comercial.
+  <Card title="Administración" icon="shield-halved" href="/administrador/panel-principal">
+    Ruta `/admin`. Roles internos: `admin`, `juridico`, `cobranza`, `comercial`. Supervisan el negocio, validan expedientes y aprueban operaciones.
   </Card>
-  <Card title="Aspirante" icon="user-clock" href="/aspirante/panel-principal">
-    Es un potencial nuevo asesor en proceso de incorporación. Puede registrarse en el sistema, acceder a la plataforma y revisar las cotizaciones que le han sido enviadas.
+
+  <Card title="Vendedores" icon="user-tie" href="/asesor/panel-principal">
+    Ruta `/seller`. Jerarquía comercial: **director → manager → advisor → broker**. Prospectan, cotizan y cierran ventas.
   </Card>
-  <Card title="Administrador" icon="gear" href="/administrador/panel-principal">
-    Tiene acceso total al sistema. Administra usuarios de todos los perfiles, consulta reportes globales y realiza la configuración general de la plataforma.
+
+  <Card title="Aspirantes" icon="user-clock" href="/aspirante/panel-principal">
+    Ruta `/seller` con acceso restringido. Candidatos a vendedor que están completando su expediente hasta la aprobación del área comercial.
   </Card>
-  <Card title="Cliente" icon="umbrella-beach" href="/cliente/panel-principal">
-    Es el propietario de una o más semanas vacacionales. Puede consultar sus semanas, realizar reservaciones y gestionar sus pagos directamente desde su panel.
+
+  <Card title="Clientes" icon="umbrella-beach" href="/cliente/panel-principal">
+    Ruta `/client`. Propietarios de una o más semanas. Su portal puede estar **limitado** o **completo** según su avance en onboarding, pago y contrato.
+  </Card>
+
+  <Card title="Público" icon="globe" href="/publico/cotizador">
+    Sin login. Cotización, simulación de pagos, apartado por broker, links de pago y acceso a documentos legales.
   </Card>
 </CardGroup>
 
-## Relación entre los perfiles
+## Marca comercial vs. entidad legal
 
-Para entender cómo interactúan los perfiles dentro del sistema, considere el siguiente flujo general:
+<Note>
+  **Betree60** es el nombre comercial de la plataforma tecnológica. En la interfaz también aparece la marca **The Oasis Tulum** cuando el contexto es el desarrollo inmobiliario. Todos los contratos, facturas y comunicaciones legales se emiten a nombre de **Concentradora Oasis Tulum S.A.P.I. de C.V.**
+</Note>
 
-1. El **Administrador** configura el sistema y crea los usuarios necesarios, asignando a cada uno su perfil correspondiente.
-2. El **Asesor** utiliza Betree60 para contactar prospectos, generar cotizaciones y cerrar ventas de semanas vacacionales.
-3. El **Aspirante** recibe una cotización del asesor que lo está incorporando al equipo, revisa la información y completa su proceso de onboarding.
-4. Una vez que se concreta la venta, el comprador pasa a ser un **Cliente** dentro del sistema, con acceso a su panel para gestionar sus semanas y reservaciones.
+## ¿Por dónde empezar?
 
-<Tip>
-  Si no sabe cuál es su perfil, consulte con el administrador de su organización. Él es quien asigna y gestiona los roles dentro de Betree60.
-</Tip>
+<CardGroup cols={2}>
+  <Card title="Primeros pasos" icon="rocket" href="/primeros-pasos">
+    Acceso, inicio de sesión y navegación básica de la plataforma.
+  </Card>
+
+  <Card title="Perfiles de usuario" icon="users" href="/perfiles-de-usuario">
+    Detalle de cada persona, sus rutas y permisos.
+  </Card>
+</CardGroup>
