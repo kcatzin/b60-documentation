@@ -22,7 +22,7 @@
             ]
           },
           {
-            "group": "Asesor",
+            "group": "Vendedores",
             "pages": [
               "asesor/panel-principal",
               "asesor/prospectos",
@@ -33,7 +33,7 @@
             ]
           },
           {
-            "group": "Aspirante",
+            "group": "Aspirantes",
             "pages": [
               "aspirante/panel-principal",
               "aspirante/registro-y-acceso",
@@ -41,7 +41,7 @@
             ]
           },
           {
-            "group": "Cliente",
+            "group": "Clientes",
             "pages": [
               "cliente/panel-principal",
               "cliente/mis-semanas",
@@ -50,12 +50,22 @@
             ]
           },
           {
-            "group": "Administrador",
+            "group": "Administración",
             "pages": [
               "administrador/panel-principal",
               "administrador/gestion-usuarios",
               "administrador/reportes",
               "administrador/configuracion"
+            ]
+          },
+          {
+            "group": "Público",
+            "icon": "globe",
+            "pages": [
+              "publico/cotizador",
+              "publico/apartado-broker",
+              "publico/link-pago",
+              "publico/legal"
             ]
           }
         ]

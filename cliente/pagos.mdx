@@ -4,95 +4,57 @@ sidebarTitle: "Pagos"
 description: "Consulte su plan de pagos, revise pagos realizados y pendientes, descargue comprobantes y sepa qué hacer si un pago no aparece reflejado en su cuenta."
 ---
 
-La sección de Pagos le permite mantener un control claro y actualizado de sus obligaciones financieras con Betree60. Aquí puede consultar su calendario de pagos, verificar cuáles han sido liquidados, descargar comprobantes y resolver cualquier discrepancia con el apoyo de su Asesor asignado.
+La sección **Pagos** concentra todo el aspecto financiero de la compra: enganche, mensualidades, comprobantes y facturas.
 
-## Cómo ver su plan de pagos
+## Métodos de pago
 
-Su plan de pagos es el calendario completo de cuotas correspondientes a su contrato de semanas vacacionales. Para consultarlo:
+Betree60 procesa pagos con **OpenPay** y ofrece los siguientes métodos:
 
-1. En el menú lateral, seleccione **Pagos**.
-2. Haga clic en la pestaña **Plan de pagos**.
-3. Se mostrará una tabla con todas las cuotas programadas, ordenadas cronológicamente.
+| Método | Notas |
+| --- | --- |
+| **Tarjeta** de crédito o débito | Inmediato. Comisión al procesador puede aplicar. |
+| **SPEI** | Transferencia interbancaria. Se genera una CLABE única por operación. |
+| **Pago en tiendas** | Referencia numérica para pagar en OXXO, 7-Eleven, etc. Se aplica en horas. |
 
-Cada registro en el plan incluye:
+## Enganche
 
-- **Número de cuota:** Identificador secuencial dentro de su plan.
-- **Fecha de vencimiento:** Día límite para realizar el pago sin recargo.
-- **Monto:** Importe a pagar correspondiente a esa cuota.
-- **Estado:** Indica si la cuota está pagada, pendiente o vencida.
+El **enganche** es el pago inicial que activa la venta. Sin enganche aplicado, el portal permanece limitado.
 
-<Tip>
-  Activar las notificaciones de recordatorio desde su perfil le permite recibir alertas por correo electrónico con anticipación a cada fecha de vencimiento, ayudándole a mantener su cuenta al corriente.
-</Tip>
+- Se paga con un **link de pago** enviado por correo al confirmar la venta.
+- También aparece dentro del portal del cliente en **Pagos → Pendientes**.
+- Cuando OpenPay confirma el cobro, el sistema aplica automáticamente el pago y actualiza el estatus del cliente.
 
-## Pagos realizados vs. pagos pendientes
+## Mensualidades
 
-Desde la sección de Pagos puede identificar fácilmente el estado de cada cuota en su historial.
+Si el esquema es financiado:
 
-<CardGroup cols={2}>
-  <Card title="Pagos realizados" icon="circle-check" href="/cliente/pagos">
-    Cuotas que ya han sido procesadas y aplicadas exitosamente a su cuenta. Puede visualizar la fecha de pago, el monto liquidado y descargar el comprobante correspondiente.
-  </Card>
-  <Card title="Pagos pendientes" icon="clock" href="/cliente/pagos">
-    Cuotas cuya fecha de vencimiento aún no ha llegado o que están próximas a vencer. Desde aquí puede iniciar el proceso de pago directamente.
-  </Card>
-</CardGroup>
+- Se genera un **plan de mensualidades** con fecha de vencimiento (día del mes fijo).
+- Cada mensualidad puede pagarse antes de la fecha para evitar recargos.
+- El cliente puede configurar **cargo automático** con tarjeta guardada.
 
-<CardGroup cols={2}>
-  <Card title="Pagos vencidos" icon="triangle-exclamation" href="/cliente/pagos">
-    Cuotas que no fueron liquidadas antes de su fecha de vencimiento. Es importante regularizarlas a la brevedad para evitar cargos adicionales o afectaciones al uso de sus semanas.
-  </Card>
-  <Card title="Pagos en revisión" icon="hourglass-half" href="/cliente/pagos">
-    Cuotas cuyo pago fue enviado pero aún está siendo validado por el equipo administrativo. Este proceso puede tomar hasta 3 días hábiles.
-  </Card>
-</CardGroup>
+## Estados de pago
 
-## Cómo realizar un pago
+| Estado | Significado |
+| --- | --- |
+| Programada | Aún no llega su fecha. |
+| Por vencer | Se acerca la fecha límite. |
+| Vencida | Pasó la fecha sin pago. |
+| Pagada | Confirmada por OpenPay y conciliada por cobranza. |
+| En proceso | En camino (SPEI o tienda) pendiente de aplicar. |
+| Rechazada | Tarjeta declinada, requiere reintento. |
 
-Si su contrato contempla la opción de realizar pagos directamente a través del sistema, siga estos pasos:
+<Warning>
+  Una mensualidad **vencida** genera notificaciones al cliente y al vendedor, y puede activar cargos moratorios según el contrato firmado.
+</Warning>
 
-1. Acceda a **Pagos** y seleccione la pestaña **Pendientes**.
-2. Identifique la cuota que desea pagar y haga clic en **Pagar**.
-3. Seleccione el método de pago disponible (transferencia, tarjeta u otro según lo habilitado en su cuenta).
-4. Ingrese los datos solicitados y confirme el pago.
-5. Recibirá una confirmación inmediata en pantalla y por correo electrónico con el folio de la transacción.
+## CFDI y comprobantes
 
-<Note>
-  Los métodos de pago disponibles pueden variar según su contrato y la configuración de su cuenta. Si no visualiza la opción de pago en línea, comuníquese con su Asesor asignado para recibir indicaciones sobre cómo realizar su pago por el canal correspondiente.
-</Note>
+- Cada pago aplicado genera un **CFDI (factura electrónica)** descargable desde el portal.
+- Los datos fiscales usados son los capturados por el cliente en su **perfil**. Si se requieren cambios, deben actualizarse en el perfil antes del siguiente pago.
+- El portal ofrece también un **estado de cuenta** con todos los movimientos y saldos.
 
-## Cómo descargar comprobantes de pago
+## Descarga de documentos
 
-Para obtener el comprobante de cualquier pago ya realizado:
-
-1. Acceda a **Pagos** y seleccione la pestaña **Realizados**.
-2. Localice el pago del que desea obtener el comprobante.
-3. Haga clic en el ícono de descarga o en el botón **Ver comprobante**.
-4. El documento se abrirá en formato PDF. Puede descargarlo o imprimirlo desde su navegador.
-
-<Tip>
-  Guarde una copia digital de sus comprobantes de pago en una carpeta segura. Contar con este respaldo facilita cualquier aclaración futura sobre su historial financiero.
-</Tip>
-
-## Qué hacer si un pago no aparece en su cuenta
-
-Ocasionalmente, un pago puede no reflejarse de inmediato debido a tiempos de procesamiento bancario o administrativo. Si realizó un pago y no aparece registrado en su historial después de 3 días hábiles, siga estos pasos:
-
-<Steps>
-  <Step title="Reúna su comprobante de pago">
-    Localice el comprobante emitido por su banco, plataforma de pago o institución financiera. Asegúrese de que incluya la fecha, el monto, el número de referencia y el beneficiario.
-  </Step>
-  <Step title="Verifique los datos del pago">
-    Confirme que el pago fue realizado a la cuenta bancaria o referencia correcta indicada por Betree60. Un pago enviado a una cuenta incorrecta requiere un proceso de recuperación diferente.
-  </Step>
-  <Step title="Contacte a su Asesor asignado">
-    Envíe a su Asesor el comprobante de pago junto con el número de cuota o folio al que corresponde. El equipo administrativo realizará la validación y aplicará el pago a su cuenta.
-  </Step>
-  <Step title="Espere la confirmación">
-    Una vez procesada la aclaración, recibirá una notificación por correo electrónico confirmando que el pago ha sido aplicado correctamente a su historial.
-  </Step>
-</Steps>
-
-<Note>
-  Para cualquier discrepancia relacionada con cobros, montos incorrectos o cargos no reconocidos, comuníquese directamente con su Asesor asignado. El equipo de Betree60 está disponible para resolver cualquier situación relacionada con su facturación y asegurarse de que su historial de pagos refleje correctamente su situación.
-</Note>
+- Comprobante individual por pago.
+- Estado de cuenta consolidado.
+- Contrato firmado en DocuSign.

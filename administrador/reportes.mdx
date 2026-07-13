@@ -4,106 +4,61 @@ sidebarTitle: "Reportes"
 description: "Consulte, filtre y exporte los reportes globales de ventas, comisiones, inventario de semanas y desempeño de asesores en Betree60 como Administrador."
 ---
 
-Los reportes del sistema le ofrecen una visión completa y actualizada de la operación de Betree60. Como Administrador, usted puede analizar el rendimiento de ventas por asesor, revisar el estado de las comisiones, monitorear el inventario de semanas vacacionales disponibles y evaluar el uso real que los clientes hacen de sus semanas adquiridas. Esta información es la base para tomar decisiones estratégicas y garantizar la salud financiera del negocio.
+Los reportes de Betree60 son la principal herramienta de análisis para la operación. Se generan sobre los datos vivos de la plataforma (MySQL) y se pueden exportar a CSV o Excel.
 
-## Reportes disponibles en el sistema
+## Reportes por área
 
-Betree60 incluye cuatro categorías principales de reportes, cada una diseñada para responder preguntas específicas sobre la operación. Explore cada tipo a continuación:
+<Tabs>
+  <Tab title="Ventas">
+    - Ventas cerradas por periodo, desarrollo y vendedor.
+    - Embudo: prospectos → cotizaciones → apartados → ventas.
+    - Tickets promedio y desglose por tipo de villa.
+    - Origen del prospecto (asesor directo, broker, web pública).
+  </Tab>
+  <Tab title="Cartera y cobranza">
+    - Cartera vigente y vencida.
+    - Cumplimiento de enganches y mensualidades.
+    - Antigüedad de saldos (aging).
+    - Conciliación con **OpenPay** por método (tarjeta, SPEI, tiendas).
+  </Tab>
+  <Tab title="Comisiones">
+    - Comisiones devengadas por vendedor y por jerarquía (override de manager/director).
+    - Comisiones pagadas vs pendientes.
+    - Detalle por venta.
+  </Tab>
+  <Tab title="Contratos">
+    - Estatus de contratos DocuSign: enviados, firmados, vencidos.
+    - Tiempo promedio de firma.
+    - Contratos pendientes por más de N días.
+  </Tab>
+  <Tab title="Ocupación">
+    - Reservas por semana, villa y temporada.
+    - Semanas con ocupación en renta vs uso propio.
+    - Ingresos generados por semana puesta en marketplace.
+  </Tab>
+  <Tab title="Marketplace">
+    - Semanas ofertadas y traspasadas entre propietarios.
+    - Precios promedio de intercambio.
+  </Tab>
+</Tabs>
 
-<AccordionGroup>
-  <Accordion title="Ventas por Asesor">
-    Este reporte muestra el volumen de ventas generado por cada asesor durante el período seleccionado. Las columnas principales incluyen:
+## Filtros comunes
 
-    - **Nombre del asesor** y región asignada
-    - **Número de cierres** (ventas completadas)
-    - **Monto total vendido** en el período
-    - **Tipo de semana más vendida** por ese asesor
-    - **Comparativo** con el período anterior (variación porcentual)
+Todos los reportes comparten filtros básicos:
 
-    Utilice este reporte para identificar a sus asesores de mayor desempeño, detectar caídas en la productividad de algún miembro del equipo y tomar decisiones sobre capacitación o incentivos adicionales.
-  </Accordion>
+- Rango de fechas.
+- Desarrollo (The Oasis Tulum u otros que se den de alta).
+- Vendedor / manager / director.
+- Estatus (venta, apartado, cancelación).
 
-  <Accordion title="Resumen de Comisiones">
-    El reporte de comisiones consolida todas las comisiones generadas en el sistema, diferenciando entre las que han sido aprobadas, las que están pendientes de revisión y las que ya fueron liquidadas. Sus columnas clave son:
+## Exportación
 
-    - **Asesor** al que corresponde la comisión
-    - **Venta de origen** (número de contrato o transacción)
-    - **Monto de la comisión** calculado según la tasa vigente
-    - **Estado:** Pendiente, Aprobada o Liquidada
-    - **Fecha de aprobación o liquidación**
+Cada tabla ofrece:
 
-    Este reporte es indispensable antes de procesar cada ciclo de pagos. Filtre por estado **Aprobada** para obtener el listado exacto de comisiones listas para liquidar.
-  </Accordion>
-
-  <Accordion title="Inventario de Clientes">
-    El reporte de inventario de clientes le permite conocer el estado contractual de toda su base de clientes activos. Incluye:
-
-    - **Nombre del cliente** y asesor asignado
-    - **Semanas contratadas** (tipo y categoría)
-    - **Estado del contrato:** Activo, En pago, Suspendido o Vencido
-    - **Saldo pendiente** de pago (si aplica)
-    - **Próxima fecha de vencimiento** de pago o renovación
-
-    Use este reporte para anticipar renovaciones, detectar clientes con pagos atrasados y priorizar la gestión de cobranza de su equipo.
-  </Accordion>
-
-  <Accordion title="Uso de Semanas Vacacionales">
-    Este reporte analiza cómo los clientes están utilizando las semanas vacacionales que adquirieron. Los indicadores disponibles son:
-
-    - **Semanas reservadas** vs. semanas disponibles por cliente
-    - **Destinos y temporadas** más solicitados en el período
-    - **Semanas sin utilizar** que están próximas a vencer
-    - **Tasa de uso general** del inventario total del sistema
-
-    Identificar semanas sin usar que están por vencer le permite al equipo de asesores contactar proactivamente a los clientes y mejorar la satisfacción con el servicio.
-  </Accordion>
-</AccordionGroup>
-
-## Filtrar reportes
-
-Todos los reportes de Betree60 admiten filtros que le permiten acotar la información al contexto exacto que necesita analizar. Para aplicar filtros:
-
-1. Seleccione el tipo de reporte desde el menú **Reportes** en el panel lateral.
-2. Haga clic en el botón **Filtros** en la parte superior de la pantalla.
-3. Configure uno o más de los siguientes parámetros según el reporte:
-
-| Filtro | Descripción |
-|---|---|
-| **Rango de fechas** | Defina una fecha de inicio y una fecha de fin para el período que desea analizar. |
-| **Asesor** | Seleccione uno o varios asesores para comparar su desempeño de manera simultánea. |
-| **Región** | Limite los resultados a una sucursal o zona geográfica específica. |
-| **Estado** | Filtre por el estado del registro: activo, pendiente, liquidado, vencido, etc. |
-| **Tipo de semana** | Aplica al reporte de inventario y uso; filtra por categoría o tipo de semana vacacional. |
-
-4. Haga clic en **Aplicar** para actualizar la tabla con los resultados filtrados. Para limpiar todos los filtros y volver a la vista completa, presione **Restablecer**.
+- **Exportar CSV** (delimitado por comas, UTF-8).
+- **Exportar Excel** (.xlsx con formato).
+- **Copiar enlace del reporte** (con filtros aplicados, útil para compartir por correo).
 
 <Tip>
-  Guarde sus combinaciones de filtros más frecuentes como vistas personalizadas usando el botón **Guardar Vista**. Así podrá cargarlas rápidamente en futuras consultas sin configurarlas desde cero cada vez.
-</Tip>
-
-## Exportar reportes
-
-Una vez que haya aplicado los filtros deseados, puede exportar los resultados para compartirlos con otros miembros del equipo o integrarlos en presentaciones y auditorías.
-
-Betree60 admite dos formatos de exportación:
-
-- **CSV:** ideal para análisis adicional en hojas de cálculo como Microsoft Excel o Google Sheets. Incluye todas las columnas visibles en la tabla actual.
-- **PDF:** genera un documento con formato de reporte imprimible, incluyendo el logotipo del sistema, el período del reporte y los filtros aplicados.
-
-Para exportar, haga clic en el botón **Exportar** en la esquina superior derecha del reporte y seleccione el formato deseado. El archivo se descargará automáticamente a su dispositivo.
-
-<Note>
-  Los archivos exportados reflejan únicamente los datos visibles según los filtros activos en el momento de la exportación. Si necesita el reporte completo sin filtros, asegúrese de restablecerlos antes de exportar.
-</Note>
-
-## Monitoreo del desempeño de asesores
-
-El reporte de **Ventas por Asesor** es la herramienta principal para evaluar el rendimiento individual de su equipo. Para un análisis efectivo, le recomendamos la siguiente rutina de seguimiento:
-
-1. **Revisión semanal:** filtre el reporte por la semana en curso y compare los cierres de cada asesor contra la meta establecida para el período.
-2. **Revisión mensual:** exporte el reporte completo del mes y compárelo con el mes anterior usando el campo de variación porcentual para identificar tendencias.
-3. **Seguimiento de asesores con bajo desempeño:** use el filtro por asesor para analizar en detalle su cartera, los tipos de semanas que vende y las etapas del proceso donde pierde más oportunidades.
-
-<Tip>
-  Combine el reporte de ventas con el reporte de comisiones para verificar que los montos generados coincidan con los pagos que recibirán sus asesores. Cualquier discrepancia debe revisarse antes del ciclo de liquidación.
+  Los reportes financieros (cartera, cobranza, comisiones) solo son accesibles a los roles `admin`, `cobranza` y `comercial`. Jurídico ve exclusivamente lo relacionado con expedientes y contratos.
 </Tip>

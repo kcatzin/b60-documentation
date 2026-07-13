@@ -4,57 +4,61 @@ sidebarTitle: "Panel Principal"
 description: "Conozca las secciones del panel de cliente en Betree60: semanas vacacionales, reservaciones, pagos y contacto con su Asesor asignado."
 ---
 
-Al iniciar sesión en Betree60 como Cliente, accede a su panel principal, el punto de partida para administrar todas sus semanas vacacionales, consultar sus reservaciones activas y revisar el estado de sus pagos. Desde aquí tiene una vista completa de su relación con el sistema.
+El **portal del Cliente** vive bajo la ruta `/client`. Es el espacio del propietario de semanas en The Oasis Tulum para completar su onboarding, reservar sus estancias y administrar sus pagos.
 
-## Resumen de su cuenta
+## Los dos estados del portal
 
-El panel principal muestra de forma inmediata el estado general de sus semanas vacacionales y actividad reciente.
+El portal opera en dos modos según el avance del cliente:
 
-<CardGroup cols={3}>
-  <Card title="Semanas totales" icon="calendar" href="/cliente/mis-semanas">
-    Número total de semanas vacacionales adquiridas en su contrato.
-  </Card>
-  <Card title="Semanas disponibles" icon="circle-check" href="/cliente/mis-semanas">
-    Semanas que aún puede utilizar durante el año en curso.
-  </Card>
-  <Card title="Semanas utilizadas" icon="clock-rotate-left" href="/cliente/mis-semanas">
-    Semanas que ya han sido aplicadas a una reservación confirmada.
-  </Card>
-</CardGroup>
+<Tabs>
+  <Tab title="Portal limitado">
+    Se activa desde el momento en que se cierra la venta. En este modo el cliente ve un **checklist de activación** con tres pasos obligatorios:
+
+    1. **Perfil completo**: datos personales, identificación, dirección, RFC.
+    2. **Primer pago** (enganche) aplicado.
+    3. **Contrato firmado** en DocuSign.
+
+    Mientras alguno esté pendiente, el portal muestra únicamente:
+
+    - Resumen de la compra y semanas asignadas.
+    - Sección **Mi perfil** (para completar datos).
+    - Sección **Pagos** (link de pago del enganche y mensualidades).
+    - Sección **Contrato** (enlace al sobre de DocuSign).
+  </Tab>
+  <Tab title="Portal completo">
+    Se desbloquea automáticamente cuando el cliente cumple los tres requisitos. En este modo se habilitan:
+
+    - **Reservaciones**: calendario para agendar estancias.
+    - **Mis semanas**: detalle y edición del uso de cada semana.
+    - **Marketplace**: intercambiar o poner semanas en renta entre propietarios.
+    - **Ingresos**: si el cliente renta su semana, ve el ingreso acumulado.
+    - **Documentos**: CFDI, comprobantes y contrato firmado.
+  </Tab>
+</Tabs>
+
+## Qué muestra el panel
+
+- Estatus de activación (limitado / completo).
+- Próxima reserva y check-in.
+- Próximo pago (fecha y monto).
+- Notificaciones (contrato pendiente, pago próximo a vencer, oferta en marketplace).
 
 <Note>
-  Si el conteo de semanas no coincide con lo estipulado en su contrato, comuníquese de inmediato con su Asesor asignado para que el equipo de soporte realice la verificación correspondiente.
+  El cliente puede completar los tres requisitos en cualquier orden. El portal se actualiza en tiempo real: en cuanto los tres se cumplen, aparecen automáticamente las secciones nuevas.
 </Note>
 
-## Accesos rápidos
+## Siguiente paso
 
-Desde el panel principal puede navegar directamente a cada sección de su cuenta. Use las siguientes tarjetas para ir al área que necesite.
+<CardGroup cols={2}>
+  <Card title="Mis semanas" icon="calendar-week" href="/cliente/mis-semanas">
+    Detalle de las semanas adquiridas.
+  </Card>
 
-<CardGroup cols={3}>
-  <Card title="Mis Semanas" icon="umbrella-beach" href="/cliente/mis-semanas">
-    Consulte el detalle de cada semana vacacional que ha adquirido: tipo, categoría, vigencia y estado actual.
+  <Card title="Reservaciones" icon="calendar-check" href="/cliente/reservaciones">
+    Reservar estancias en The Oasis Tulum.
   </Card>
-  <Card title="Reservaciones" icon="plane-departure" href="/cliente/reservaciones">
-    Solicite, revise o cancele reservaciones para usar sus semanas en los destinos disponibles.
-  </Card>
+
   <Card title="Pagos" icon="credit-card" href="/cliente/pagos">
-    Revise su calendario de pagos, consulte su historial y descargue comprobantes de pago.
+    Enganche, mensualidades y CFDI.
   </Card>
 </CardGroup>
-
-## Actividad reciente
-
-En la sección **Actividad reciente** del panel encontrará un registro cronológico de las últimas acciones realizadas en su cuenta, incluyendo reservaciones creadas, pagos registrados y actualizaciones de datos. Esto le permite mantener un seguimiento claro de todo lo que ocurre en su perfil.
-
-## Su Asesor asignado
-
-Cada Cliente en Betree60 cuenta con un Asesor personal que lo acompaña durante toda su experiencia. En la tarjeta de **Mi Asesor**, ubicada en la barra lateral o en la parte inferior del panel, encontrará:
-
-- Nombre completo de su Asesor
-- Número de teléfono o extensión de contacto
-- Correo electrónico directo
-- Horario de atención
-
-<Tip>
-  Si tiene dudas sobre sus semanas, reservaciones o pagos, su Asesor asignado es siempre el primer punto de contacto. Puede comunicarse con él directamente desde el panel usando el botón **Contactar Asesor**.
-</Tip>

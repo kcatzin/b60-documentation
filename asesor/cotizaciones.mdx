@@ -4,84 +4,53 @@ sidebarTitle: "Cotizaciones"
 description: "Cree cotizaciones personalizadas en Betree60, envíelas a sus prospectos y monitoree su estatus: pendiente, aceptada, rechazada o vencida."
 ---
 
-Una **cotización** en Betree60 es un documento formal que detalla las semanas vacacionales disponibles, los precios aplicables, las condiciones de compra y la vigencia de la oferta. Las cotizaciones son la herramienta principal con la que usted comunica el valor de los productos a sus prospectos y agiliza el proceso de decisión de compra. Cada cotización queda registrada en el sistema y vinculada tanto al prospecto como al asesor que la generó.
+La **cotización** es el documento comercial que resume la propuesta de compra para el prospecto: villa, semanas, temporada y esquema de pago.
 
-## ¿Qué contiene una cotización?
-
-Una cotización en Betree60 incluye los siguientes elementos:
-
-- **Prospecto destinatario** — nombre y datos de contacto.
-- **Semanas vacacionales ofertadas** — destino, temporada, tipo de habitación y número de semanas.
-- **Precio unitario y total** — desglosado por semana y con el total de la propuesta.
-- **Condiciones de pago** — opciones de pago de contado, a plazos u otras modalidades disponibles.
-- **Vigencia de la cotización** — fecha límite hasta la cual aplican los precios indicados.
-- **Notas del asesor** — comentarios personalizados o información adicional para el prospecto.
-
-## Crear y enviar una cotización
+## Crear una cotización
 
 <Steps>
-  <Step title="Vaya a la sección de Cotizaciones">
-    En el menú lateral, seleccione **Cotizaciones**. Verá la lista de todas las cotizaciones que ha generado, con su estatus actual.
+  <Step title="Seleccione el prospecto">
+    Desde el detalle del prospecto, botón **Nueva cotización**. También puede crearse una cotización sin prospecto y asociarla después.
   </Step>
-  <Step title="Inicie una nueva cotización">
-    Haga clic en el botón **+ Nueva Cotización** en la esquina superior derecha. Se abrirá el formulario de creación.
+  <Step title="Configure la villa y semanas">
+    - Desarrollo y tipo de villa.
+    - Número de semanas (1 o varias).
+    - Selección de temporada (alta, media, baja).
   </Step>
-  <Step title="Seleccione el prospecto destinatario">
-    En el campo **Prospecto**, comience a escribir el nombre o correo del prospecto y selecciónelo de la lista desplegable. Si el prospecto aún no está registrado, deberá crearlo primero en la sección **Prospectos**.
+  <Step title="Esquema de pago">
+    - Contado (con descuento configurado).
+    - Financiado: monto de enganche \+ número de mensualidades.
+    - El sistema calcula automáticamente CAT informativo, total y desglose.
   </Step>
-  <Step title="Agregue las semanas vacacionales">
-    Haga clic en **+ Agregar semana** para incluir cada producto en la cotización. Para cada semana, seleccione el destino, la temporada, el tipo de habitación y la cantidad. El sistema calculará el precio automáticamente según el catálogo vigente.
+  <Step title="Revisar y guardar">
+    Al guardar, la cotización queda en estado **Borrador**.
   </Step>
-  <Step title="Configure las condiciones de pago y vigencia">
-    Seleccione la modalidad de pago disponible para este prospecto e indique la fecha de vigencia de la cotización. Le recomendamos no exceder 15 días naturales para mantener la urgencia en el proceso de decisión.
-  </Step>
-  <Step title="Agregue notas personalizadas (opcional)">
-    Utilice el campo **Notas para el prospecto** para incluir un mensaje personalizado, destacar beneficios adicionales o responder anticipadamente alguna objeción que el prospecto haya expresado.
-  </Step>
-  <Step title="Envíe la cotización">
-    Haga clic en **Enviar cotización**. Elija el método de envío:
-    - **Por correo electrónico** — Betree60 enviará la cotización directamente al correo registrado del prospecto.
-    - **Copiar enlace** — obtenga un enlace único que puede compartir por WhatsApp, mensaje de texto u otro canal.
-
-    La cotización quedará registrada con el estatus **Pendiente**.
+  <Step title="Enviar al prospecto">
+    Botón **Enviar por correo**. Se genera un PDF y se envía vía **Resend**. La cotización pasa a estado **Enviada**.
   </Step>
 </Steps>
 
-## Estatus de las cotizaciones
+## Estados de la cotización
 
-Cada cotización puede encontrarse en uno de los siguientes estatus:
+| Estado | Descripción |
+| --- | --- |
+| Borrador | Guardada, no enviada. |
+| Enviada | Recibida por el prospecto. |
+| Vista | El prospecto abrió el correo o el PDF. |
+| Aceptada | El prospecto confirma que quiere avanzar a apartado. |
+| Expirada | Vencida por tiempo (configurable, típicamente 7 días). |
+| Cancelada | Reemplazada por otra versión o descartada. |
 
-| Estatus | Descripción |
-|---|---|
-| **Pendiente** | La cotización fue enviada y está esperando respuesta del prospecto. |
-| **Aceptada** | El prospecto confirmó su interés y se procederá al cierre de la venta. |
-| **Rechazada** | El prospecto declinó la oferta. Se recomienda registrar el motivo. |
-| **Vencida** | La fecha de vigencia expiró sin que el prospecto respondiera. |
-| **Cancelada** | El asesor canceló la cotización antes de que el prospecto respondiera. |
+## Descuentos y condiciones especiales
 
-<Tip>
-  Cuando una cotización cambie a estatus **Aceptada**, recuerde actualizar el estatus del prospecto a **Cerrado ganado** y, si corresponde, iniciar el proceso de conversión a cliente.
-</Tip>
+- Advisor y broker: descuentos dentro del tabulador aprobado.
+- Manager: puede autorizar descuentos adicionales dentro de su alcance.
+- Director / comercial: autoriza esquemas personalizados fuera de tabulador.
 
-## Editar una cotización
+<Warning>
+  Toda condición fuera del tabulador queda registrada como excepción y aparece en el reporte de ventas.
+</Warning>
 
-Solo es posible editar cotizaciones que se encuentren en estatus **Pendiente**. Para hacerlo:
+## De cotización a apartado
 
-1. Abra la cotización desde la lista.
-2. Haga clic en el botón **Editar**, disponible en la parte superior del detalle.
-3. Realice los cambios necesarios en precios, semanas, condiciones o notas.
-4. Haga clic en **Guardar y reenviar** para notificar al prospecto sobre la versión actualizada, o **Guardar sin reenviar** si prefiere comunicar los cambios por otro medio.
-
-<Note>
-  Cada edición genera una nueva versión de la cotización. Las versiones anteriores quedan guardadas en el historial para fines de auditoría y consulta.
-</Note>
-
-## Cancelar una cotización
-
-Si necesita cancelar una cotización antes de que el prospecto responda:
-
-1. Abra la cotización en estatus **Pendiente**.
-2. Haga clic en **Cancelar cotización**.
-3. Ingrese un motivo de cancelación (requerido) y confirme la acción.
-
-Las cotizaciones canceladas no pueden reactivarse. Si es necesario, deberá generar una nueva cotización desde cero.
+Una cotización aceptada habilita el botón **Convertir en apartado**. El apartado hereda todos los datos de la cotización y genera el link de pago inicial.

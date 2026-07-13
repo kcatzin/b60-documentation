@@ -1,0 +1,57 @@
+---
+title: "Links de pago"
+sidebarTitle: "Links de pago"
+description: "Cómo funcionan los enlaces únicos de pago generados por Betree60 para apartado, enganche y mensualidades vía OpenPay."
+---
+
+Un **link de pago** es un enlace único generado por Betree60 para cobrar un concepto específico: apartado, enganche o mensualidad. Se envía por correo o mensaje directo al cliente/prospecto y no requiere que la persona tenga cuenta.
+
+## Quién genera links de pago
+
+| Emisor | Concepto típico |
+| --- | --- |
+| Vendedor | Apartado o enganche del prospecto. |
+| Broker (externo) | Apartado dentro del flujo público. |
+| Cobranza | Mensualidad puntual, adelanto, ajuste. |
+| Sistema (automático) | Mensualidades del plan de financiamiento. |
+
+## Datos del link
+
+Cada link muestra al pagador:
+
+- **Concepto** (ej. "Enganche villa V-12, semana 30").
+- **Monto** exacto.
+- **Vigencia** del enlace (típicamente 72 horas).
+- **Métodos disponibles** vía OpenPay: tarjeta, SPEI, pago en tiendas.
+
+## Ciclo de un link
+
+<Steps>
+  <Step title="Generación">
+    Se emite en el sistema y se envía por correo (Resend) o se copia manualmente.
+  </Step>
+  <Step title="Apertura">
+    El destinatario abre el enlace. Betree60 registra la apertura.
+  </Step>
+  <Step title="Pago">
+    El destinatario selecciona el método y paga. OpenPay procesa la operación.
+  </Step>
+  <Step title="Confirmación">
+    OpenPay envía webhook a Betree60. El pago se aplica en tiempo real:
+
+    - Si es apartado: se marca la semana como apartada.
+    - Si es enganche: se actualiza el estatus del cliente.
+    - Si es mensualidad: se marca como pagada y se emite CFDI.
+  </Step>
+  <Step title="Cierre del link">
+    Un mismo link solo puede pagarse una vez. Si expira sin pago, se puede regenerar.
+  </Step>
+</Steps>
+
+<Warning>
+  Nunca comparta un link de pago recibido con terceros no autorizados. Aunque solo puede pagarse una vez, terceros podrían adelantar el pago con datos que no le corresponden.
+</Warning>
+
+## Reintentos
+
+Si el pago es rechazado (tarjeta declinada, etc.), el link permanece activo hasta su vencimiento y el destinatario puede reintentar con otro método.

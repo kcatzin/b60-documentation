@@ -4,109 +4,72 @@ sidebarTitle: "Configuración"
 description: "Configure comisiones, catálogo de semanas, notificaciones, reglas de negocio y seguridad del sistema Betree60 desde el perfil Administrador."
 ---
 
-La sección de configuración de Betree60 le permite ajustar los parámetros que gobiernan el funcionamiento de toda la plataforma. Desde aquí usted puede establecer las tasas de comisión para cada asesor o producto, gestionar el catálogo de semanas vacacionales disponibles, definir las reglas operativas del negocio y controlar los accesos al sistema. Realice cualquier cambio con cuidado, ya que varias de estas configuraciones tienen impacto directo en la operación diaria de su equipo.
+La sección de **Configuración** concentra los parámetros globales de la plataforma. Solo el rol `admin` tiene acceso completo.
 
-## Tasas de comisión
+## Desarrollos y villas
 
-Las tasas de comisión determinan el porcentaje que cada asesor recibe sobre el valor de las ventas que cierra. Betree60 permite configurar tasas diferenciadas por asesor individual o por tipo de producto, lo que le da flexibilidad para estructurar esquemas de incentivos personalizados.
+- **Desarrollos**: catálogo de proyectos comercializados. El principal es **The Oasis Tulum**.
+- **Tipos de villa**: número de habitaciones, capacidad, amenidades, precio base.
+- **Villas individuales**: cada unidad física con su identificador y estado (disponible, vendida por semana, en renta).
+
+## Semanas y temporadas
+
+Betree60 vende **semanas de temporada**. La configuración de temporadas define:
+
+| Temporada | Descripción | Ajuste de precio |
+| --- | --- | --- |
+| Alta | Fechas de mayor demanda (Semana Santa, fin de año, verano) | Multiplicador mayor |
+| Media | Fechas de demanda estable | Multiplicador base |
+| Baja | Fechas de menor demanda | Multiplicador menor |
+
+Cada semana del año se etiqueta con una temporada, y de ahí se calculan los precios en el cotizador.
+
+## Esquemas de pago
+
+Se definen los planes que se ofrecen al prospecto:
+
+- **Contado**: pago único con descuento configurable.
+- **Financiado**: enganche (porcentaje o monto fijo) \+ N mensualidades.
+- **Personalizado**: solo director / comercial puede autorizar variantes fuera del tabulador.
+
+## Tabuladores de comisión
+
+Para cada nivel de la jerarquía comercial (director, manager, advisor, broker) se configura:
+
+- Porcentaje base sobre venta.
+- Override de manager y director sobre las ventas de su equipo.
+- Reglas especiales para brokers externos.
+
+## Plantillas de correo (Resend)
+
+Todos los correos transaccionales se emiten a través de **Resend**. Desde configuración se editan las plantillas:
+
+- Bienvenida a aspirante, vendedor, cliente.
+- Confirmación de apartado.
+- Envío de contrato para firma.
+- Recordatorios de pago.
+- Confirmación de reserva.
+
+## Integraciones
+
+Panel de credenciales y estado de las integraciones:
+
+| Integración | Uso |
+| --- | --- |
+| **OpenPay** | Cobro de apartado, enganche y mensualidades (tarjeta, SPEI, tiendas). |
+| **DocuSign** | Firma electrónica del contrato de compraventa. |
+| **Resend** | Correo transaccional. |
+| **Wasabi S3** | Almacenamiento de identificaciones, comprobantes, contratos firmados. |
 
 <Warning>
-  Los cambios en las tasas de comisión aplican únicamente a las ventas generadas **a partir de la fecha en que se guarda la nueva configuración**. Las comisiones ya aprobadas o en estado pendiente que corresponden a ventas anteriores **no se recalculan ni se modifican de manera retroactiva**. Si necesita ajustar una comisión histórica, deberá hacerlo manualmente desde el módulo de Reportes.
+  Los cambios en credenciales de integración se aplican inmediatamente en producción. Cualquier error puede detener cobros o firmas. Modifíquelas solo con acompañamiento del equipo técnico.
 </Warning>
 
-Para ajustar las tasas de comisión:
+## Aviso legal y textos públicos
 
-1. Diríjase a **Configuración > Comisiones** en el menú lateral.
-2. Seleccione si desea configurar la tasa a nivel de **Asesor individual** o a nivel de **Tipo de producto**.
-3. Localice el registro que desea modificar y haga clic en **Editar**.
-4. Ingrese el nuevo porcentaje en el campo correspondiente.
-5. Haga clic en **Guardar**. El sistema registrará la fecha y hora del cambio y el nombre del Administrador que lo aplicó.
+También desde configuración se editan los textos legales que se muestran en el sitio público:
 
-<Tip>
-  Si su empresa maneja esquemas de comisión escalonados (por ejemplo, un porcentaje base más un bono por superar una meta), puede configurar los umbrales y los porcentajes adicionales en la pestaña **Esquemas Escalonados** dentro de la misma sección.
-</Tip>
-
-## Catálogo de semanas vacacionales
-
-El catálogo define los productos que su equipo de asesores puede ofrecer y vender. Cada entrada del catálogo corresponde a un tipo de semana vacacional con sus propias características, categoría y precio base.
-
-### Agregar un nuevo tipo de semana
-
-1. Vaya a **Configuración > Catálogo de Semanas**.
-2. Haga clic en **+ Nueva Semana**.
-3. Complete los campos del formulario:
-   - **Nombre del producto** (ej. "Semana Doble Temporada Alta")
-   - **Categoría** (Estándar, Premium, Lujo, etc.)
-   - **Temporada aplicable** (Alta, Media, Baja o Todo el año)
-   - **Precio base de lista**
-   - **Descripción interna** para referencia del equipo
-4. Haga clic en **Guardar al Catálogo**.
-
-### Editar o desactivar un producto existente
-
-Para modificar un producto, localícelo en la tabla del catálogo y haga clic en **Editar**. Para retirarlo de la oferta activa sin eliminar su historial, utilice el interruptor de estado para marcarlo como **Inactivo**. Los productos inactivos no aparecen en el flujo de ventas, pero sus registros históricos se conservan para efectos de reportes.
-
-## Reglas de precios
-
-Las reglas de precios permiten configurar descuentos, recargos o condiciones especiales que se aplican automáticamente a las cotizaciones generadas en el sistema.
-
-Desde **Configuración > Reglas de Precios** usted puede definir:
-
-- **Descuentos por temporada:** reducciones automáticas en temporada baja para incentivar ventas.
-- **Recargos por tipo de pago:** diferencial de precio para pagos a plazos vs. pago de contado.
-- **Precios especiales por perfil:** tarifas exclusivas para clientes referidos o con membresía activa.
-
-Cada regla puede tener una fecha de vigencia definida para que el sistema la active y desactive automáticamente sin intervención manual.
-
-## Notificaciones del sistema
-
-Betree60 puede enviar alertas automáticas por correo electrónico a usuarios, asesores y administradores ante eventos específicos del sistema. Para gestionar estas notificaciones:
-
-1. Diríjase a **Configuración > Notificaciones**.
-2. Revise la lista de eventos disponibles. Cada evento tiene un interruptor para activarlo o desactivarlo.
-3. Para cada evento activo, puede personalizar:
-   - Los **destinatarios** (Administrador, Asesor responsable, Cliente o todos)
-   - El **asunto y cuerpo del correo** usando las variables de plantilla disponibles
-   - La **frecuencia** de envío (inmediata, diaria resumida, semanal)
-4. Guarde los cambios al finalizar.
-
-Algunos eventos que puede configurar para notificación automática:
-
-| Evento | Descripción |
-|---|---|
-| Nueva venta registrada | Alerta al administrador y al asesor cuando se cierra una venta. |
-| Comisión pendiente de aprobación | Notifica al administrador que hay comisiones en espera de revisión. |
-| Vencimiento de semana próximo | Alerta al asesor y al cliente cuando una semana está por vencer. |
-| Pago atrasado | Avisa al asesor cuando un cliente tiene un pago vencido. |
-| Usuario inactivo | Notifica al administrador cuando una cuenta no ha tenido actividad en X días. |
-
-## Reglas de negocio
-
-Las reglas de negocio definen los parámetros operativos que el sistema aplica automáticamente durante el proceso de ventas y gestión de contratos.
-
-Desde **Configuración > Reglas de Negocio** usted puede establecer:
-
-- **Plazo de cancelación:** número de días antes de una reserva en que el cliente puede cancelar sin penalización. Después de este plazo, el sistema aplica automáticamente la política de retención definida.
-- **Condiciones de pago:** número máximo de cuotas permitidas, día de corte para pagos mensuales y porcentaje mínimo de enganche requerido para activar un contrato.
-- **Vigencia de cotizaciones:** número de días durante los que una cotización generada por un asesor permanece válida antes de expirar automáticamente.
-- **Política de reactivación:** condiciones bajo las cuales un contrato suspendido puede reactivarse (por ejemplo, pago del saldo vencido más un porcentaje de reactivación).
-
-<Note>
-  Cualquier cambio en las reglas de negocio entra en vigor de manera inmediata para nuevos contratos. Los contratos ya activos continuarán rigiéndose por las condiciones pactadas al momento de su firma, a menos que usted aplique una actualización masiva desde el módulo de Gestión de Usuarios.
-</Note>
-
-## Acceso y seguridad del sistema
-
-La configuración de seguridad le permite controlar cómo los usuarios acceden a Betree60 y qué medidas de protección están activas en la plataforma.
-
-Desde **Configuración > Seguridad** usted puede gestionar:
-
-- **Política de contraseñas:** longitud mínima, requisitos de complejidad y período obligatorio de cambio (ej. cada 90 días).
-- **Autenticación de dos factores (2FA):** active el 2FA de manera obligatoria para perfiles de Administrador o de forma opcional para el resto de perfiles.
-- **Sesiones activas:** consulte todas las sesiones abiertas en el sistema y cierre de forma remota aquellas que considere sospechosas o inactivas.
-- **Registro de auditoría:** active o desactive el registro detallado de acciones por usuario. Este registro es fundamental para cumplimiento y resolución de incidentes.
-- **Permisos por perfil:** ajuste qué secciones del sistema puede visualizar o editar cada tipo de perfil (Asesor, Aspirante, Cliente).
-
-<Tip>
-  Se recomienda revisar el registro de auditoría al menos una vez por semana para detectar accesos no autorizados o cambios de configuración realizados por usuarios distintos a usted. Puede exportar el log completo en formato CSV desde la misma pantalla de seguridad.
-</Tip>
+- Aviso de privacidad.
+- Términos y condiciones de venta.
+- Condiciones de apartado y cancelación.
+- Textos del cotizador y simulador.

@@ -4,86 +4,50 @@ sidebarTitle: "Comisiones"
 description: "Revise sus comisiones generadas en Betree60, entienda los estatus de pago, filtre por fecha o cliente y sepa qué hacer ante una discrepancia."
 ---
 
-El módulo de **Comisiones** le permite consultar en todo momento el detalle de las ganancias que ha generado como resultado de sus ventas cerradas. Cada vez que una venta es registrada y aprobada en el sistema, Betree60 calcula automáticamente la comisión correspondiente y la agrega a su historial. Desde esta sección usted puede verificar el monto de cada comisión, conocer su estatus y llevar un control preciso de sus ingresos por concepto de ventas.
+El módulo **Comisiones** muestra al vendedor cuánto ha ganado, qué está pendiente de cobro y cuál es el estatus del pago por parte de la empresa.
 
-## ¿Cómo se calculan las comisiones?
+## Cómo se calcula una comisión
 
-Las comisiones se calculan como un **porcentaje sobre el valor total de cada venta cerrada**. El porcentaje exacto aplicable a cada tipo de producto o categoría de semana vacacional es definido por el Administrador del sistema y puede variar según:
+La comisión se genera al concretarse la **venta** (no en el apartado). El cálculo aplica el **tabulador vigente** para la jerarquía del vendedor:
 
-- El tipo de semana vacacional vendida (temporada alta, baja, destino especial, etc.).
-- Las promociones o campañas vigentes al momento del cierre.
-- El plan de compensación asignado a su perfil de asesor.
-
-<Note>
-  Las tasas de comisión son establecidas y gestionadas exclusivamente por el Administrador. Si desea conocer las tarifas aplicables a los productos que usted vende, o si cree que la tasa aplicada no corresponde a su plan de compensación, comuníquese con su administrador.
-</Note>
-
-## Dónde ver sus comisiones
-
-Para acceder al módulo de comisiones, seleccione **Comisiones** en el menú lateral. Verá una tabla con el listado de todas sus comisiones registradas, que incluye:
-
-- **Fecha de la venta** — cuándo se registró el cierre que generó la comisión.
-- **Cliente** — nombre del cliente asociado a la venta.
-- **Producto vendido** — descripción de la semana vacacional.
-- **Valor de la venta** — monto total de la transacción.
-- **Porcentaje de comisión** — tasa aplicada según su plan de compensación.
-- **Monto de comisión** — importe calculado en la moneda configurada.
-- **Estatus** — estado actual de la comisión (ver siguiente sección).
-
-## Estatus de las comisiones
-
-Cada comisión puede encontrarse en uno de los siguientes estados:
-
-| Estatus | Descripción |
-|---|---|
-| **Pendiente** | La comisión fue generada pero aún no ha sido revisada por el administrador. |
-| **Aprobada** | El administrador validó la comisión. Está lista para ser liquidada en el próximo período de pago. |
-| **Pagada** | La comisión fue liquidada. Incluye la fecha de pago en el detalle del registro. |
-| **En revisión** | El administrador marcó la comisión para verificación adicional antes de aprobarla. |
-| **Rechazada** | La comisión no fue aprobada. El motivo del rechazo se indica en el detalle del registro. |
-
-<Tip>
-  Revise periódicamente las comisiones en estatus **Pendiente** o **En revisión**. Si llevan más tiempo del habitual sin avanzar, puede comunicarse con su administrador para solicitar una actualización.
-</Tip>
-
-## Filtrar comisiones por fecha o cliente
-
-Para localizar comisiones específicas o analizar su desempeño en un período determinado, utilice los filtros disponibles en la parte superior de la tabla:
-
-- **Filtro por rango de fechas** — seleccione una fecha de inicio y una fecha de fin para ver únicamente las comisiones generadas en ese período.
-- **Filtro por estatus** — muestre solo las comisiones pendientes, aprobadas, pagadas u otro estatus de su interés.
-- **Búsqueda por cliente** — escriba el nombre del cliente para ver todas las comisiones asociadas a ese registro.
-- **Filtro por producto** — acote los resultados a un tipo de semana vacacional específico.
-
-También puede exportar la tabla filtrada a formato CSV o PDF usando el botón **Exportar** para llevar un registro personal o compartirlo con su administrador.
-
-## Resumen de comisiones
-
-En la parte superior del módulo encontrará un panel de resumen con los siguientes indicadores:
-
-- **Total comisiones del mes** — suma de todas las comisiones generadas en el mes en curso.
-- **Comisiones aprobadas pendientes de pago** — monto total ya aprobado que será liquidado próximamente.
-- **Total pagado (acumulado)** — suma histórica de todas las comisiones ya liquidadas.
-
-## ¿Qué hacer si cree que una comisión es incorrecta?
-
-Si detecta una discrepancia en el monto, la tasa aplicada o el estatus de alguna comisión, siga estos pasos:
-
-<Steps>
-  <Step title="Revise el detalle de la comisión">
-    Haga clic sobre el registro en cuestión para ver el desglose completo: valor de la venta, tasa aplicada, fecha y cliente. Verifique que la información corresponde a la venta que usted cerró.
-  </Step>
-  <Step title="Compare con su plan de compensación">
-    Contraste la tasa de comisión mostrada con el porcentaje que le fue informado para ese tipo de producto. Tenga a la mano el plan de compensación o cualquier comunicación donde se le haya indicado la tasa vigente.
-  </Step>
-  <Step title="Comuníquese con su administrador">
-    Si confirma que existe una discrepancia, contacte a su administrador directamente o utilice el canal de soporte interno de su organización. Indique el número de comisión, el cliente, la fecha y el monto esperado versus el registrado.
-  </Step>
-  <Step title="Espere la resolución">
-    El administrador revisará el caso y, de proceder, realizará el ajuste correspondiente. Recibirá una notificación en el sistema cuando el estatus de la comisión sea actualizado.
-  </Step>
-</Steps>
+| Nivel | Comisión base típica | Override |
+| --- | --- | --- |
+| Broker | Menor % (canal externo) | — |
+| Advisor | % base sobre venta | — |
+| Manager | Comisión propia \+ override del % del equipo | Sobre ventas de su equipo |
+| Director | Comisión propia \+ override sobre todos los managers a cargo | Sobre ventas de la operación |
 
 <Note>
-  Los asesores no pueden modificar directamente el monto ni el estatus de sus comisiones. Todos los ajustes son realizados por el Administrador del sistema.
+  El tabulador exacto se configura por el `admin` en la sección de Configuración → Tabuladores.
 </Note>
+
+## Estados de una comisión
+
+| Estado | Significado |
+| --- | --- |
+| Devengada | Venta cerrada, comisión reconocida pero aún no pagable. |
+| Liberada | Se cumplió el evento gatillo (típicamente cobro de enganche \+ firma de contrato). |
+| Programada | Incluida en el próximo periodo de pago. |
+| Pagada | Depositada al vendedor. |
+| Retenida | En revisión por cancelación, cambio de esquema o incumplimiento. |
+
+## Consulta por vendedor
+
+Desde el panel puede filtrar por periodo, cliente, tipo de operación y estatus. Cada línea es enlazable al detalle de la venta que originó la comisión.
+
+## Cancelaciones y reversos
+
+Si una venta se cancela después de reconocer la comisión, el sistema:
+
+1. Marca la comisión como **Reversada**.
+2. Genera un cargo negativo en el siguiente cálculo del vendedor.
+3. Deja registro en la bitácora del cliente y del vendedor.
+
+<Warning>
+  Los brokers externos no acumulan overrides. Su comisión se paga contra tabulador puntual por venta cerrada.
+</Warning>
+
+## Descargas
+
+- Recibo detallado por periodo (PDF).
+- CSV con el desglose línea por línea para conciliación personal.

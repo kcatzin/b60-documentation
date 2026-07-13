@@ -4,86 +4,68 @@ sidebarTitle: "Registro y Acceso"
 description: "Aprenda cómo recibir su invitación, completar su registro, configurar su contraseña e iniciar sesión correctamente por primera vez en Betree60."
 ---
 
-Su acceso a Betree60 comienza cuando un Asesor o Administrador lo registra en el sistema como Aspirante. A partir de ese momento, usted recibirá un correo electrónico con las instrucciones necesarias para activar su cuenta, establecer su contraseña y completar su perfil antes de iniciar sesión por primera vez.
+Convertirse en vendedor de Betree60 pasa por una etapa previa como **aspirante**. En esta etapa usted crea su cuenta, sube documentos y espera la validación del área comercial.
 
-## ¿Cómo es registrado en el sistema?
-
-Existen dos formas en las que un Aspirante puede ser incorporado a Betree60:
-
-- **Por invitación directa:** Un Asesor o Administrador ingresa sus datos en la plataforma y el sistema le envía automáticamente un correo de invitación.
-- **Por registro asistido:** El Asesor completa el registro en nombre del Aspirante durante una reunión o llamada, y posteriormente le comparte las credenciales de acceso.
-
-<Note>
-  Si no encuentra el correo de invitación en su bandeja de entrada, revise la carpeta de correo no deseado o spam. El remitente será una dirección oficial del sistema Betree60.
-</Note>
-
-## Proceso de registro paso a paso
+## Cómo registrarse
 
 <Steps>
-  <Step title="Reciba el correo de invitación">
-    Busque en su bandeja de entrada un correo con el asunto **"Bienvenido a Betree60 — Active su cuenta"**. Este mensaje contiene un enlace de activación único y con tiempo de vigencia limitado. Haga clic en el botón **Activar cuenta** para continuar.
+  <Step title="Abra la página de registro">
+    URL pública: `/seller/registro`.
   </Step>
-  <Step title="Establezca su contraseña">
-    Al hacer clic en el enlace de activación, será dirigido a una página segura donde deberá crear su contraseña personal. Su contraseña debe cumplir los siguientes requisitos:
-
-    - Mínimo 8 caracteres
-    - Al menos una letra mayúscula
-    - Al menos un número
-    - Al menos un carácter especial (por ejemplo: `!`, `@`, `#`)
-
-    Ingrese la contraseña dos veces para confirmarla y haga clic en **Guardar contraseña**.
+  <Step title="Capture sus datos">
+    Nombre completo, correo, teléfono, ciudad de residencia.
   </Step>
-  <Step title="Complete su perfil de Aspirante">
-    Después de establecer su contraseña, el sistema lo dirigirá al formulario de perfil. Deberá completar la siguiente información:
-
-    | Campo | Requerido |
-    |---|---|
-    | Nombre completo | Sí |
-    | Correo electrónico | Sí (prellenado) |
-    | Número de teléfono | Sí |
-    | Fecha de nacimiento | Sí |
-    | Dirección | Opcional |
-    | Notas o comentarios adicionales | Opcional |
-
-    Haga clic en **Guardar perfil** cuando haya terminado.
+  <Step title="Defina su contraseña">
+    Mínimo 8 caracteres, con al menos una mayúscula, un número y un símbolo.
   </Step>
-  <Step title="Inicie sesión por primera vez">
-    Una vez guardado su perfil, será redirigido automáticamente a la pantalla de inicio de sesión. Ingrese su correo electrónico y la contraseña que acaba de crear para acceder a su panel de Aspirante.
-
-    La URL de acceso es:
-    ```
-    https://app.betree60.com/login
-    ```
+  <Step title="Acepte términos">
+    Aviso de privacidad y condiciones de uso del portal.
   </Step>
-  <Step title="Explore su panel de Aspirante">
-    Al ingresar, verá su panel principal con las secciones disponibles para su perfil. Asegúrese de que la barra de progreso de su perfil indique el 100 % para facilitar su proceso de aprobación como Asesor.
+  <Step title="Verifique su correo">
+    Recibirá un correo (vía **Resend**) con un enlace de verificación. Al hacer clic, su cuenta queda activa como aspirante.
   </Step>
 </Steps>
 
-## Información necesaria para completar su perfil
+## Iniciar sesión
 
-Para que su cuenta quede activa y lista para revisión, asegúrese de contar con la siguiente información antes de comenzar el registro:
+- **URL**: `/seller/login`
+- El sistema reconoce que la cuenta es de aspirante y muestra el **panel restringido** con el expediente y el material formativo.
 
-<AccordionGroup>
-  <Accordion title="Datos personales">
-    Su nombre completo tal como aparece en su identificación oficial, su fecha de nacimiento y su número de teléfono de contacto principal.
-  </Accordion>
-  <Accordion title="Correo electrónico válido">
-    El correo electrónico con el que fue registrado. Este será su usuario de acceso permanente al sistema y el canal por el que recibirá notificaciones importantes.
-  </Accordion>
-  <Accordion title="Dirección de residencia">
-    Aunque este campo es opcional, proporcionar su dirección completa puede agilizar el proceso de aprobación de su cuenta por parte del Administrador.
-  </Accordion>
-</AccordionGroup>
+## Documentos del expediente
 
-## ¿Problemas para acceder?
+Para ser aprobado, el aspirante debe subir:
 
-Si tiene dificultades para ingresar a la plataforma, puede seguir estos pasos antes de contactar a su Asesor:
+| Documento | Formato | Notas |
+| --- | --- | --- |
+| Identificación oficial | INE o pasaporte (frente y reverso) | JPG o PDF, legible |
+| Comprobante de domicilio | No mayor a 3 meses | JPG o PDF |
+| Constancia de situación fiscal | Descargable en el portal del SAT | PDF |
+| Carátula de cuenta bancaria | Para pago de comisiones | PDF |
+| CV o carta de intención | Opcional según el flujo | PDF |
+| Contrato de intermediación firmado | Solo brokers externos | PDF |
 
-1. **Enlace expirado:** Los enlaces de activación tienen una vigencia de 48 horas. Si su enlace ya no funciona, solicite uno nuevo a su Asesor o Administrador.
-2. **Contraseña olvidada:** En la pantalla de inicio de sesión, haga clic en **¿Olvidó su contraseña?** e ingrese su correo electrónico para recibir un enlace de restablecimiento.
-3. **Correo no recibido:** Verifique su carpeta de spam y asegúrese de que la dirección de correo registrada sea correcta.
+Los archivos se guardan cifrados en **Wasabi S3** y solo son consultables por los roles `admin` y `comercial`.
+
+## Estados del expediente
+
+<Steps>
+  <Step title="Incompleto">
+    Aún faltan documentos o datos por capturar.
+  </Step>
+  <Step title="Enviado a revisión">
+    El aspirante marca su expediente como completo y lo envía. Aparece en la bandeja del área comercial.
+  </Step>
+  <Step title="En revisión">
+    Comercial revisa cada documento y datos.
+  </Step>
+  <Step title="Correcciones solicitadas">
+    Comercial rechaza uno o varios documentos con comentarios. El aspirante recibe correo con el detalle.
+  </Step>
+  <Step title="Aprobado">
+    El aspirante es promovido a **vendedor**, se le asigna jerarquía (broker o advisor) y se le habilita el módulo comercial.
+  </Step>
+</Steps>
 
 <Tip>
-  Si después de seguir estos pasos aún no puede acceder a su cuenta, comuníquese directamente con el Asesor o Administrador que lo registró. Ellos pueden reenviar su invitación o restablecerle el acceso desde el panel de administración.
+  Puede consultar el estatus de su expediente en cualquier momento desde su panel principal.
 </Tip>

@@ -1,0 +1,44 @@
+---
+title: "Apartado por broker"
+sidebarTitle: "Apartado por broker"
+description: "Cómo un broker externo comparte un enlace para que su referido realice el apartado inicial sin crear cuenta en Betree60."
+---
+
+Los **brokers externos** son un canal de venta que opera sin acceso directo al ciclo completo. Para no forzar al prospecto a crear cuenta durante el primer contacto, Betree60 ofrece el flujo de **apartado por broker**: un enlace único que el broker comparte con su referido.
+
+## Cómo funciona
+
+<Steps>
+  <Step title="El broker genera el enlace">
+    Desde su panel `/seller`, en Prospectos → Nuevo, elige la opción **Generar link de apartado**. El enlace contiene el ID del broker para trazar la comisión.
+  </Step>
+  <Step title="El referido abre el enlace">
+    Se le muestra una página pública con la villa preseleccionada, semanas y esquema de pago propuestos.
+  </Step>
+  <Step title="Captura de datos mínimos">
+    Nombre completo, correo, teléfono y país. No requiere cuenta.
+  </Step>
+  <Step title="Pago del apartado">
+    Se genera un **link de pago OpenPay** con el monto de apartado. El referido paga con tarjeta, SPEI o tienda.
+  </Step>
+  <Step title="Confirmación">
+    Al confirmarse el pago:
+
+    - Se crea el prospecto asociado al broker.
+    - Se registra el apartado como vigente por N días (configurable).
+    - Se envían correos de bienvenida y de instrucciones al referido.
+    - El área comercial recibe la notificación para dar continuidad.
+  </Step>
+</Steps>
+
+## Vencimiento del apartado
+
+Cada apartado tiene una **fecha límite** para convertirse en venta (típicamente 15 días). Si vence sin cierre:
+
+- La semana se libera.
+- El apartado pasa a estado **Expirado**.
+- La comisión del broker no se genera.
+
+## Cancelación y reembolso
+
+Las condiciones de cancelación del apartado (parcial, total o no reembolsable) se muestran al referido antes de pagar y se configuran desde Administración → Configuración → Textos legales.

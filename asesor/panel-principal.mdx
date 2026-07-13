@@ -4,50 +4,61 @@ sidebarTitle: "Panel Principal"
 description: "Conozca las secciones disponibles al iniciar sesión como Asesor en Betree60: prospectos, cotizaciones, clientes, seguimiento de ventas y comisiones."
 ---
 
-Al iniciar sesión como Asesor en Betree60, el panel principal le ofrece una vista centralizada de toda su actividad comercial. Desde aquí puede acceder rápidamente a sus prospectos, revisar el estado de sus cotizaciones, consultar su cartera de clientes, dar seguimiento a sus ventas activas y verificar las comisiones que ha generado. El panel está diseñado para que usted tenga siempre el control de su gestión sin necesidad de navegar por múltiples menús.
+El panel del **Vendedor** es la pantalla de entrada bajo la ruta `/seller`. Muestra un resumen personalizado según su **posición en la jerarquía** (director, manager, advisor o broker).
 
-## Resumen del panel
+## Acceso
 
-Al cargar el panel, verá un conjunto de indicadores clave que reflejan su desempeño actual:
+- **URL**: `/seller/login`
+- **Requisito**: cuenta activa. Los aspirantes tienen acceso limitado hasta ser aprobados.
 
-- **Prospectos activos** — cantidad de personas en proceso de seguimiento.
-- **Cotizaciones enviadas** — número de cotizaciones pendientes de respuesta.
-- **Ventas cerradas (mes actual)** — total de semanas vacacionales vendidas en el período.
-- **Comisiones pendientes** — monto acumulado aún no liquidado.
-- **Tareas de seguimiento vencidas** — actividades de seguimiento que requieren atención inmediata.
+## Qué se muestra en el panel
 
-Estos indicadores se actualizan en tiempo real cada vez que usted o un administrador registran un cambio en el sistema.
+<AccordionGroup>
+  <Accordion title="Tarjetas de desempeño">
+    Ventas del mes, comisiones devengadas, prospectos activos, apartados vigentes.
+  </Accordion>
 
-## Secciones principales
+  <Accordion title="Tareas pendientes">
+    Prospectos por contactar, cotizaciones sin envío, apartados por vencer, contratos por firmar del cliente, pagos por confirmar.
+  </Accordion>
 
-Utilice las siguientes tarjetas para acceder directamente a cada módulo disponible en su perfil de Asesor.
+  <Accordion title="Últimas actividades">
+    Feed cronológico de acciones sobre su cartera (aperturas de cotización, pagos, firmas de contrato).
+  </Accordion>
+
+  <Accordion title="Accesos rápidos">
+    Botones: **Nuevo prospecto**, **Nueva cotización**, **Nuevo apartado**.
+  </Accordion>
+</AccordionGroup>
+
+## Diferencias por jerarquía
+
+| Nivel | Alcance del panel |
+| --- | --- |
+| Advisor / Broker | Solo su propia cartera. |
+| Manager | Cartera propia \+ cartera del equipo con override. |
+| Director | Toda la operación comercial, sin restricción. |
+
+<Tip>
+  Los **brokers externos** ven un panel simplificado: prospectos referidos, apartados iniciados y estado de su comisión. No tienen acceso a comisiones de otros vendedores ni a reportes internos.
+</Tip>
+
+## Siguiente paso
 
 <CardGroup cols={2}>
   <Card title="Prospectos" icon="user-plus" href="/asesor/prospectos">
-    Agregue y gestione personas interesadas en adquirir semanas vacacionales. Actualice su estatus y conviértalos en clientes al cerrar una venta.
+    Registrar y calificar prospectos.
   </Card>
+
   <Card title="Cotizaciones" icon="file-invoice-dollar" href="/asesor/cotizaciones">
-    Cree cotizaciones personalizadas, envíelas a sus prospectos y monitoree si fueron aceptadas, rechazadas o están pendientes.
+    Crear y enviar cotizaciones personalizadas.
   </Card>
+
   <Card title="Clientes" icon="users" href="/asesor/clientes">
-    Consulte el perfil completo de sus clientes activos, el historial de compras y las semanas vacacionales adquiridas.
+    Su cartera de clientes con onboarding y contrato.
   </Card>
-  <Card title="Seguimiento de Ventas" icon="chart-line" href="/asesor/seguimiento-ventas">
-    Registre llamadas, correos y reuniones. Visualice el avance de cada trato en su pipeline de ventas.
-  </Card>
-  <Card title="Comisiones" icon="circle-dollar-to-slot" href="/asesor/comisiones">
-    Revise sus comisiones generadas, su estatus (pendiente, aprobada, pagada) y filtre por fecha o cliente.
+
+  <Card title="Comisiones" icon="hand-holding-dollar" href="/asesor/comisiones">
+    Comisiones devengadas y pagadas.
   </Card>
 </CardGroup>
-
-## Navegación rápida
-
-<Tip>
-  Utilice el menú lateral izquierdo para moverse entre secciones en cualquier momento. Cada módulo mantiene su estado, por lo que puede alternar entre ellos sin perder información no guardada en formularios abiertos.
-</Tip>
-
-Para regresar al panel principal desde cualquier sección, haga clic en el logotipo de Betree60 en la esquina superior izquierda o seleccione **Panel Principal** en el menú lateral.
-
-<Note>
-  Si alguno de los indicadores del panel muestra un valor inesperado, comuníquese con su administrador. Algunas métricas dependen de registros que solo el administrador puede modificar, como la aprobación de comisiones o el cierre definitivo de ventas.
-</Note>

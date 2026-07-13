@@ -4,90 +4,63 @@ sidebarTitle: "Gestión de Usuarios"
 description: "Aprenda a crear, editar, desactivar y asignar roles a los usuarios de Betree60 —Asesores, Aspirantes y Clientes— desde el perfil de Administrador."
 ---
 
-La gestión de usuarios es una de las responsabilidades centrales del Administrador en Betree60. Desde esta sección usted puede consultar todos los perfiles registrados en el sistema —Asesores, Aspirantes y Clientes—, mantener su información actualizada, controlar el acceso a la plataforma y establecer las relaciones entre asesores y sus clientes asignados.
+El módulo de **Gestión de usuarios** concentra el alta, edición, activación y baja de todos los usuarios de Betree60. Está disponible únicamente para el rol `admin` y, en modo lectura, para `comercial`.
 
-<Note>
-  Solo los usuarios con perfil de Administrador pueden crear cuentas, modificar roles y desactivar accesos. Los Asesores únicamente pueden visualizar los perfiles que tienen asignados.
-</Note>
+## Tipos de usuario que se administran aquí
 
-## Visualización de usuarios por tipo de perfil
+| Tipo | Ruta destino | Quién puede crearlo |
+| --- | --- | --- |
+| Interno (`admin`, `juridico`, `cobranza`, `comercial`) | `/admin` | `admin` |
+| Vendedor (director, manager, advisor, broker) | `/seller` | `admin` o `comercial` |
+| Cliente | `/client` | Automático (al cerrar venta) o `admin` |
 
-Para consultar el listado completo de usuarios, diríjase al menú lateral y seleccione **Usuarios**. La pantalla principal muestra una tabla con todos los registros activos del sistema. Utilice las pestañas en la parte superior para filtrar por tipo de perfil:
-
-- **Asesores:** personal de ventas con acceso a su cartera de clientes y a sus reportes de comisiones.
-- **Aspirantes:** prospectos en proceso de incorporación que aún no han completado su registro como clientes.
-- **Clientes:** usuarios que ya cuentan con semanas vacacionales adquiridas o en proceso de pago.
-
-Puede combinar el filtro de perfil con la barra de búsqueda para localizar un usuario específico por nombre, correo electrónico o número de identificación.
-
-## Crear un nuevo usuario
+## Alta de un usuario interno
 
 <Steps>
-  <Step title="Acceda al módulo de Usuarios">
-    En el menú lateral, seleccione **Usuarios** y luego haga clic en el botón **+ Nuevo Usuario** ubicado en la esquina superior derecha de la tabla.
+  <Step title="Abra Gestión de usuarios → Internos → Nuevo">
+    Se despliega el formulario de alta.
   </Step>
-  <Step title="Seleccione el tipo de perfil">
-    En el formulario de creación, elija el perfil que corresponde al nuevo usuario: **Asesor**, **Aspirante** o **Cliente**. Este campo determina los permisos y las vistas a las que tendrá acceso una vez que inicie sesión.
+  <Step title="Capture los datos">
+    Nombre completo, correo, teléfono y rol o roles (multi-selección: `admin`, `juridico`, `cobranza`, `comercial`).
   </Step>
-  <Step title="Complete la información personal">
-    Ingrese los datos requeridos:
-    - **Nombre completo**
-    - **Correo electrónico** (se usará como nombre de usuario)
-    - **Teléfono de contacto**
-    - **Región o sucursal** a la que pertenece (si aplica)
+  <Step title="Envío del correo de activación">
+    Betree60 envía por **Resend** un correo con enlace de activación (válido por 24 horas) para que el usuario defina su contraseña.
   </Step>
-  <Step title="Establezca una contraseña inicial">
-    Ingrese una contraseña temporal para el nuevo usuario. Betree60 le solicitará que la cambie en su primer inicio de sesión. La contraseña debe tener al menos ocho caracteres e incluir una letra mayúscula y un número.
-  </Step>
-  <Step title="Guarde el registro">
-    Haga clic en **Crear Usuario**. El sistema enviará automáticamente un correo de bienvenida a la dirección registrada con las instrucciones de acceso y el enlace para establecer su contraseña definitiva.
+  <Step title="Activación de segundo factor">
+    En el primer inicio de sesión, si el rol lo requiere, se le solicita configurar 2FA por correo.
   </Step>
 </Steps>
 
-<Tip>
-  Si necesita crear varios usuarios del mismo perfil de manera simultánea, utilice la opción **Importar desde CSV** disponible en el menú de acciones de la tabla. Descargue la plantilla, complétela y cárguela para registrar múltiples cuentas en un solo paso.
-</Tip>
+## Alta de un vendedor
 
-## Editar la información o el rol de un usuario
+Un vendedor casi siempre proviene de un **Aspirante** aprobado, pero también puede crearse manualmente:
 
-Para modificar los datos de un usuario existente, localícelo en la tabla y haga clic en el ícono de lápiz (✏️) en su fila, o bien seleccione su nombre para abrir la vista de detalle y luego presione **Editar**.
-
-Desde el formulario de edición usted puede actualizar:
-
-- Nombre, teléfono y datos de contacto
-- Región o sucursal asignada
-- **Tipo de perfil / rol** — recuerde que solo el Administrador puede realizar este cambio
-- Correo electrónico (se requiere confirmación mediante el correo anterior)
-
-Una vez realizados los cambios, haga clic en **Guardar Cambios**. El sistema registrará la modificación en el historial de auditoría con la fecha, la hora y el usuario Administrador que realizó la acción.
-
-## Desactivar o reactivar una cuenta
-
-Desactivar una cuenta impide que el usuario inicie sesión sin eliminar permanentemente su historial ni sus datos en el sistema. Esto es útil cuando un asesor deja la empresa o un cliente solicita una pausa en su cuenta.
-
-Para desactivar una cuenta:
-
-1. Localice al usuario en la tabla y abra su perfil.
-2. Haga clic en el botón **Desactivar Cuenta** en la sección de estado.
-3. Confirme la acción en el cuadro de diálogo que aparece. Se le solicitará ingresar el motivo de la desactivación para el registro de auditoría.
-
-Para reactivar una cuenta previamente desactivada, aplique el filtro **Inactivos** en la tabla de usuarios, localice el registro correspondiente y haga clic en **Reactivar Cuenta**.
+1. **Vía aspirante aprobado**: al aprobar el expediente, el sistema convierte al aspirante en vendedor y solicita su **posición en la jerarquía** (director / manager / advisor / broker) y su **manager superior**.
+2. **Alta manual**: `Nuevo vendedor` → capturar datos, jerarquía y tabulador de comisiones.
 
 <Note>
-  Al desactivar la cuenta de un Asesor, los Clientes y Aspirantes que tenía asignados quedarán sin asesor activo. El sistema le notificará cuántos registros se verán afectados antes de confirmar la desactivación, para que usted pueda reasignarlos de inmediato.
+  Los brokers externos requieren además un **contrato de intermediación** cargado en el expediente antes de poder generar apartados.
 </Note>
 
-## Asignar un Asesor a un Cliente o Aspirante
+## Alta de un cliente
 
-La asignación de asesores determina qué miembro del equipo de ventas es responsable de dar seguimiento a cada cliente o prospecto. Para realizar una asignación:
+Los clientes se crean automáticamente al cerrarse la venta. El alta manual desde Administración solo se usa para casos especiales (migración de cartera histórica, correcciones). Requiere:
 
-1. Abra el perfil del **Cliente** o **Aspirante** al que desea asignar un asesor.
-2. En la sección **Asesor Responsable**, haga clic en **Asignar** o **Cambiar Asesor**.
-3. Seleccione el asesor de la lista desplegable. Solo se mostrarán asesores con cuenta activa.
-4. Haga clic en **Confirmar Asignación**.
+- Datos personales y de contacto.
+- Semanas asignadas.
+- Esquema de pago acordado.
+- Documentos base del expediente.
 
-El asesor asignado recibirá una notificación automática indicando que se le ha vinculado un nuevo cliente o aspirante a su cartera.
+## Editar y desactivar
 
-<Tip>
-  Para hacer reasignaciones masivas —por ejemplo, al redistribuir la cartera de un asesor que dejó la empresa— utilice la opción **Reasignación por Lote** en el menú de acciones de la tabla, seleccione los registros afectados y elija el nuevo asesor destino.
-</Tip>
+- **Editar**: modifica datos de contacto, roles y jerarquía. No modifica correo salvo excepción manual desde base de datos.
+- **Desactivar**: bloquea el acceso sin borrar información histórica. Betree60 conserva la trazabilidad completa (auditoría) de todo lo que hizo la cuenta.
+- **Reactivar**: disponible en cualquier momento por un `admin`.
+
+<Warning>
+  Nunca se eliminan usuarios de forma dura. La baja siempre es lógica para preservar la integridad de expedientes, contratos y pagos.
+</Warning>
+
+## Auditoría
+
+Cada cambio queda registrado (quién, cuándo, qué campo) y es consultable desde el detalle del usuario. Los cambios de rol y las bajas se notifican por correo al usuario afectado.

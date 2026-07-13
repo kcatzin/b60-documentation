@@ -4,45 +4,65 @@ sidebarTitle: "Panel Principal"
 description: "Conozca las métricas clave, accesos rápidos y secciones principales que conforman el panel de control del Administrador en Betree60."
 ---
 
-Al iniciar sesión como Administrador en Betree60, usted accede a una vista centralizada desde la que puede supervisar toda la operación del sistema: el estado de los usuarios, el progreso de ventas, las comisiones pendientes y la actividad reciente de sus asesores. Este panel es su punto de partida para tomar decisiones informadas y mantener el control total del sistema.
+El panel de Administración es la pantalla de entrada para el personal interno de **Concentradora Oasis Tulum S.A.P.I. de C.V.** Se sirve bajo la ruta `/admin` y muestra información distinta según el rol asignado: `admin`, `juridico`, `cobranza` o `comercial`.
 
-## Métricas principales del tablero
+## Cómo acceder
 
-Al ingresar, el panel muestra en tiempo real un resumen de los indicadores más importantes del sistema. Estas cifras se actualizan automáticamente cada vez que usted recarga la página.
+- **URL**: `/admin/login`
+- **Requisitos**: cuenta interna creada por un usuario con rol `admin`.
+- **Segundo factor**: obligatorio para roles con permisos de escritura sobre usuarios o cobros.
 
-- **Usuarios Activos:** total de usuarios con sesión habilitada en el sistema, desglosados por perfil: Asesores, Aspirantes y Clientes.
-- **Total de Clientes:** número de clientes registrados en la plataforma, incluyendo los activos y los que están en proceso de incorporación.
-- **Comisiones Pendientes:** monto acumulado de comisiones generadas que aún no han sido aprobadas ni liquidadas a los asesores correspondientes.
-- **Ventas Recientes:** resumen de las transacciones completadas en los últimos 7 días, con el monto total y el número de semanas vendidas.
+## Estructura del panel
 
-## Actividad reciente del sistema
+<AccordionGroup>
+  <Accordion title="KPIs superiores">
+    Bloques con métricas del negocio del mes en curso:
 
-Debajo de las métricas principales, el panel muestra un registro cronológico de las acciones más recientes: nuevos clientes registrados, ventas cerradas, asesores que iniciaron sesión y cambios de configuración aplicados. Este historial le permite detectar rápidamente cualquier actividad inusual sin necesidad de generar un reporte completo.
+    - Ventas cerradas (número y monto).
+    - Enganches cobrados.
+    - Mensualidades vencidas.
+    - Reservaciones activas.
+  </Accordion>
 
-<Note>
-  Las métricas del panel reflejan únicamente los datos a los que su cuenta tiene acceso. Si usted administra varias regiones o sucursales, asegúrese de verificar el filtro de alcance en la esquina superior derecha del tablero.
-</Note>
+  <Accordion title="Bandejas pendientes">
+    Cola de acciones que requieren intervención humana:
 
-## Navegación rápida a las secciones administrativas
+    - Aspirantes por aprobar (rol `comercial`).
+    - Expedientes de cliente por validar (rol `juridico`).
+    - Contratos por enviar o firmar (rol `juridico`).
+    - Pagos por conciliar (rol `cobranza`).
+  </Accordion>
 
-Desde el panel principal puede acceder directamente a todas las áreas de gestión del sistema. Utilice las siguientes secciones para administrar usuarios, consultar reportes y ajustar la configuración de Betree60.
+  <Accordion title="Accesos rápidos">
+    Atajos a los módulos más usados: gestión de usuarios, reportes y configuración.
+  </Accordion>
+</AccordionGroup>
 
-<CardGroup cols={3}>
-  <Card title="Gestión de Usuarios" icon="user-gear" href="/administrador/gestion-usuarios">
-    Cree, edite, desactive y asigne roles a todos los usuarios del sistema, incluyendo Asesores, Aspirantes y Clientes.
-  </Card>
-  <Card title="Reportes" icon="file-chart-column" href="/administrador/reportes">
-    Consulte reportes de ventas, comisiones, inventario de semanas y desempeño de asesores con filtros avanzados.
-  </Card>
-  <Card title="Configuración" icon="sliders" href="/administrador/configuracion">
-    Ajuste las tasas de comisión, el catálogo de semanas vacacionales, las reglas de negocio y los parámetros de seguridad.
-  </Card>
-</CardGroup>
+## Vista por rol
 
-## Consejos para aprovechar el panel
+| Rol | Bandejas visibles | Escritura |
+| --- | --- | --- |
+| `admin` | Todas | Todo |
+| `juridico` | Expedientes, contratos | Expedientes, contratos |
+| `cobranza` | Pagos, morosidad | Pagos, planes de mensualidad |
+| `comercial` | Aspirantes, ventas, comisiones | Aspirantes, jerarquía comercial |
 
 <Tip>
-  Revise el panel al inicio de cada jornada laboral para identificar comisiones pendientes de aprobación y ventas que requieran seguimiento. Mantener estos indicadores al día evita retrasos en la liquidación a sus asesores.
+  Un mismo usuario puede tener varios roles simultáneos. En ese caso el panel muestra todas las bandejas correspondientes.
 </Tip>
 
-Si alguna métrica muestra un valor inesperado o un indicador aparece en rojo, diríjase a la sección de **Reportes** para obtener el detalle completo y determinar la acción correctiva correspondiente.
+## Siguiente paso
+
+<CardGroup cols={2}>
+  <Card title="Gestión de usuarios" icon="users-gear" href="/administrador/gestion-usuarios">
+    Alta, edición y baja de personal interno, vendedores y clientes.
+  </Card>
+
+  <Card title="Reportes" icon="chart-line" href="/administrador/reportes">
+    Reportes de ventas, cartera, comisiones y ocupación.
+  </Card>
+
+  <Card title="Configuración" icon="gear" href="/administrador/configuracion">
+    Desarrollos, villas, temporadas, esquemas de pago e integraciones.
+  </Card>
+</CardGroup>
